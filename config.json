@@ -39,7 +39,7 @@
     "Tim": "#d55181"
   },
   "exclude_game_ids": [],
-  "final": true,
+  "final": false,
   "finale": {
     "kicker": "The house always wins",
     "notes": [
