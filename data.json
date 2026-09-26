@@ -2,7 +2,7 @@
   "newcomers": [
     {
       "name": "Tim",
-      "tonight": -6.0
+      "tonight": 1.9
     }
   ],
   "history": {
@@ -69,7 +69,7 @@
       ],
       [
         "2026-09-25",
-        -66.31
+        -81.91
       ]
     ],
     "John": [
@@ -179,7 +179,7 @@
       ],
       [
         "2026-09-25",
-        206.49
+        206.39
       ]
     ],
     "Andrew": [
@@ -229,7 +229,7 @@
       ],
       [
         "2026-09-25",
-        6.64
+        13.24
       ]
     ],
     "Chris": [
@@ -291,7 +291,7 @@
       ],
       [
         "2026-09-25",
-        77.69
+        78.89
       ]
     ]
   },
@@ -309,44 +309,44 @@
           "games": 0
         },
         "John": {
-          "ahead": 16,
-          "games": 32
+          "ahead": 18,
+          "games": 34
         },
         "Andy": {
-          "ahead": 13,
-          "games": 24
+          "ahead": 15,
+          "games": 26
         },
         "Andrew": {
           "ahead": 11,
-          "games": 15
+          "games": 17
         }
       },
       "John": {
         "Chris": {
           "ahead": 16,
-          "games": 32
+          "games": 34
         },
         "John": {
           "ahead": 0,
           "games": 0
         },
         "Andy": {
-          "ahead": 19,
-          "games": 32
+          "ahead": 21,
+          "games": 34
         },
         "Andrew": {
           "ahead": 14,
-          "games": 23
+          "games": 25
         }
       },
       "Andy": {
         "Chris": {
           "ahead": 11,
-          "games": 24
+          "games": 26
         },
         "John": {
           "ahead": 12,
-          "games": 32
+          "games": 34
         },
         "Andy": {
           "ahead": 0,
@@ -354,21 +354,21 @@
         },
         "Andrew": {
           "ahead": 5,
-          "games": 12
+          "games": 14
         }
       },
       "Andrew": {
         "Chris": {
-          "ahead": 4,
-          "games": 15
+          "ahead": 6,
+          "games": 17
         },
         "John": {
-          "ahead": 9,
-          "games": 23
+          "ahead": 11,
+          "games": 25
         },
         "Andy": {
-          "ahead": 7,
-          "games": 12
+          "ahead": 9,
+          "games": 14
         },
         "Andrew": {
           "ahead": 0,
@@ -379,26 +379,26 @@
     "flow": {
       "Chris": {
         "Chris": 0.0,
-        "John": -17.17,
-        "Andy": 15.43,
+        "John": -17.07,
+        "Andy": 16.53,
         "Andrew": 3.66
       },
       "John": {
-        "Chris": 17.17,
+        "Chris": 17.07,
         "John": 0.0,
         "Andy": 32.16,
         "Andrew": 3.63
       },
       "Andy": {
-        "Chris": -15.43,
+        "Chris": -16.53,
         "John": -32.16,
         "Andy": 0.0,
-        "Andrew": -4.7
+        "Andrew": -11.3
       },
       "Andrew": {
         "Chris": -3.66,
         "John": -3.63,
-        "Andy": 4.7,
+        "Andy": 11.3,
         "Andrew": 0.0
       }
     },
@@ -428,50 +428,50 @@
         "name": "Andrew",
         "nemesis": "John",
         "paid": 9.83,
-        "atm": "Nik",
-        "received": 10.71
+        "atm": "Andy",
+        "received": 12.45
       }
     ],
     "records": [
       {
         "name": "Chris",
-        "games": 32,
-        "win_streak": 5,
-        "streak": 5,
+        "games": 34,
+        "win_streak": 7,
+        "streak": 7,
         "busts": 1,
         "rebuys": 0,
-        "avg": 2.43,
-        "cashed": 72
+        "avg": 2.32,
+        "cashed": 74
       },
       {
         "name": "John",
-        "games": 60,
+        "games": 62,
         "win_streak": 6,
-        "streak": 3,
+        "streak": -2,
         "busts": 0,
         "rebuys": 0,
-        "avg": 3.44,
-        "cashed": 58
+        "avg": 3.33,
+        "cashed": 56
       },
       {
         "name": "Andy",
-        "games": 32,
+        "games": 34,
         "win_streak": 3,
-        "streak": 1,
+        "streak": -2,
         "busts": 3,
         "rebuys": 0,
-        "avg": -2.07,
-        "cashed": 53
+        "avg": -2.41,
+        "cashed": 50
       },
       {
         "name": "Andrew",
-        "games": 23,
+        "games": 25,
         "win_streak": 2,
-        "streak": -1,
+        "streak": 2,
         "busts": 0,
         "rebuys": 0,
-        "avg": 0.29,
-        "cashed": 39
+        "avg": 0.53,
+        "cashed": 44
       }
     ],
     "swings": {
@@ -507,7 +507,9 @@
         3.11,
         2.21,
         2.95,
-        6.1
+        6.1,
+        0.6,
+        0.6
       ],
       "John": [
         -0.02,
@@ -569,7 +571,9 @@
         -2.04,
         13.21,
         3.1,
-        1.35
+        1.35,
+        -0.05,
+        -0.05
       ],
       "Andy": [
         0.01,
@@ -603,7 +607,9 @@
         11.51,
         1.87,
         -20.0,
-        1.15
+        1.15,
+        -7.8,
+        -7.8
       ],
       "Andrew": [
         -3.6,
@@ -628,7 +634,9 @@
         3.01,
         -0.99,
         8.5,
-        -2.6
+        -2.6,
+        3.3,
+        3.3
       ]
     },
     "months": {
@@ -665,7 +673,7 @@
           null,
           2.8,
           null,
-          15.77
+          16.97
         ],
         "John": [
           -1.57,
@@ -682,7 +690,7 @@
           -2.58,
           30.55,
           23.02,
-          23.32
+          23.22
         ],
         "Andy": [
           0.01,
@@ -699,7 +707,7 @@
           null,
           0.45,
           null,
-          1.15
+          -14.45
         ],
         "Andrew": [
           null,
@@ -716,7 +724,7 @@
           -11.48,
           null,
           null,
-          5.72
+          12.32
         ]
       }
     },
@@ -825,136 +833,226 @@
           "Tim": "Welcome to the table, Tim. That'll be $6, paid directly to Chris. Every newcomer's first lesson."
         }
       }
+    },
+    {
+      "n": 2,
+      "id": 559,
+      "players": [
+        {
+          "name": "Tim",
+          "buy_in": 20.0,
+          "cashout": 23.95,
+          "net": 3.95
+        },
+        {
+          "name": "Andrew",
+          "buy_in": 20.0,
+          "cashout": 23.3,
+          "net": 3.3
+        },
+        {
+          "name": "Chris",
+          "buy_in": 20.0,
+          "cashout": 20.6,
+          "net": 0.6
+        },
+        {
+          "name": "John",
+          "buy_in": 20.0,
+          "cashout": 19.95,
+          "net": -0.05
+        },
+        {
+          "name": "Andy",
+          "buy_in": 20.0,
+          "cashout": 12.2,
+          "net": -7.8
+        }
+      ],
+      "recap": {
+        "headline": "Tim takes Game 2",
+        "recap": "Tim walks away up $3.95; Andy is funding tonight's snacks.",
+        "lines": {
+          "Tim": "Took the pot for $3.95. Insufferable for at least a week.",
+          "Andy": "Donated $7.80 to the cause. Generous. Tragic."
+        },
+        "auto": true
+      }
+    },
+    {
+      "n": 3,
+      "id": 560,
+      "players": [
+        {
+          "name": "Tim",
+          "buy_in": 20.0,
+          "cashout": 23.95,
+          "net": 3.95
+        },
+        {
+          "name": "Andrew",
+          "buy_in": 20.0,
+          "cashout": 23.3,
+          "net": 3.3
+        },
+        {
+          "name": "Chris",
+          "buy_in": 20.0,
+          "cashout": 20.6,
+          "net": 0.6
+        },
+        {
+          "name": "John",
+          "buy_in": 20.0,
+          "cashout": 19.95,
+          "net": -0.05
+        },
+        {
+          "name": "Andy",
+          "buy_in": 20.0,
+          "cashout": 12.2,
+          "net": -7.8
+        }
+      ],
+      "recap": {
+        "headline": "Tim takes Game 3",
+        "recap": "Tim walks away up $3.95; Andy is funding tonight's snacks.",
+        "lines": {
+          "Tim": "Took the pot for $3.95. Insufferable for at least a week.",
+          "Andy": "Donated $7.80 to the cause. Generous. Tragic."
+        },
+        "auto": true
+      }
     }
   ],
   "standings": [
     {
       "name": "Chris",
-      "net": 6.1,
-      "games": 1,
-      "won": 1,
+      "net": 7.3,
+      "games": 3,
+      "won": 3,
       "best": 6.1,
-      "worst": 6.1,
-      "bought_in": 20.0,
-      "rebuys": 0,
-      "busts": 0
-    },
-    {
-      "name": "John",
-      "net": 1.35,
-      "games": 1,
-      "won": 1,
-      "best": 1.35,
-      "worst": 1.35,
-      "bought_in": 20.0,
-      "rebuys": 0,
-      "busts": 0
-    },
-    {
-      "name": "Andy",
-      "net": 1.15,
-      "games": 1,
-      "won": 1,
-      "best": 1.15,
-      "worst": 1.15,
-      "bought_in": 20.0,
+      "worst": 0.6,
+      "bought_in": 60.0,
       "rebuys": 0,
       "busts": 0
     },
     {
       "name": "Andrew",
-      "net": -2.6,
-      "games": 1,
-      "won": 0,
-      "best": -2.6,
+      "net": 4.0,
+      "games": 3,
+      "won": 2,
+      "best": 3.3,
       "worst": -2.6,
-      "bought_in": 20.0,
+      "bought_in": 60.0,
       "rebuys": 0,
       "busts": 0
     },
     {
       "name": "Tim",
-      "net": -6.0,
-      "games": 1,
-      "won": 0,
-      "best": -6.0,
+      "net": 1.9,
+      "games": 3,
+      "won": 2,
+      "best": 3.95,
       "worst": -6.0,
-      "bought_in": 20.0,
+      "bought_in": 60.0,
+      "rebuys": 0,
+      "busts": 0
+    },
+    {
+      "name": "John",
+      "net": 1.25,
+      "games": 3,
+      "won": 1,
+      "best": 1.35,
+      "worst": -0.05,
+      "bought_in": 60.0,
+      "rebuys": 0,
+      "busts": 0
+    },
+    {
+      "name": "Andy",
+      "net": -14.45,
+      "games": 3,
+      "won": 1,
+      "best": 1.15,
+      "worst": -7.8,
+      "bought_in": 60.0,
       "rebuys": 0,
       "busts": 0
     }
   ],
   "settlements": [
     {
-      "from": "Tim",
+      "from": "Andy",
       "to": "Chris",
-      "amount": 6.0
+      "amount": 7.3
     },
     {
-      "from": "Andrew",
-      "to": "Chris",
-      "amount": 0.1
+      "from": "Andy",
+      "to": "Andrew",
+      "amount": 4.0
     },
     {
-      "from": "Andrew",
+      "from": "Andy",
+      "to": "Tim",
+      "amount": 1.9
+    },
+    {
+      "from": "Andy",
       "to": "John",
-      "amount": 1.35
-    },
-    {
-      "from": "Andrew",
-      "to": "Andy",
-      "amount": 1.15
+      "amount": 1.25
     }
   ],
   "featured": [
     {
       "name": "John",
-      "games": 60,
+      "games": 62,
       "wins": 35,
-      "losses": 25,
-      "win_rate": 58,
-      "lifetime_net": 206.49,
+      "losses": 27,
+      "win_rate": 56,
+      "lifetime_net": 206.39,
       "best_night": 29.7,
       "worst_night": -15.4,
       "busted": 0,
-      "tonight": 1.35
+      "tonight": 1.25
     },
     {
       "name": "Chris",
-      "games": 32,
-      "wins": 23,
+      "games": 34,
+      "wins": 25,
       "losses": 9,
-      "win_rate": 72,
-      "lifetime_net": 77.69,
+      "win_rate": 74,
+      "lifetime_net": 78.89,
       "best_night": 27.6,
       "worst_night": -20.0,
       "busted": 1,
-      "tonight": 6.1
+      "tonight": 7.3
     },
     {
       "name": "Andrew",
-      "games": 23,
-      "wins": 9,
+      "games": 25,
+      "wins": 11,
       "losses": 14,
-      "win_rate": 39,
-      "lifetime_net": 6.64,
+      "win_rate": 44,
+      "lifetime_net": 13.24,
       "best_night": 14.75,
       "worst_night": -10.4,
       "busted": 0,
-      "tonight": -2.6
+      "tonight": 4.0
     },
     {
       "name": "Andy",
-      "games": 32,
+      "games": 34,
       "wins": 17,
-      "losses": 15,
-      "win_rate": 53,
-      "lifetime_net": -66.31,
+      "losses": 17,
+      "win_rate": 50,
+      "lifetime_net": -81.91,
       "best_night": 11.51,
       "worst_night": -20.0,
       "busted": 3,
-      "tonight": 1.15
+      "tonight": -14.45
     }
   ],
-  "updated_at": "2026-09-26T02:12:16+00:00"
+  "updated_at": "2026-09-26T03:31:04+00:00"
 }
