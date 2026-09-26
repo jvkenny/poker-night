@@ -5,34 +5,39 @@
       "tonight": -2.05
     }
   ],
-  "final": false,
+  "final": true,
   "finale": {
     "kicker": "The house always wins",
     "notes": [
       [
         "\ud83d\udc51",
         "Host wins his own game",
-        "Lost Game 1 in his own house, won 2 of 3 and finished +$15.20."
+        "Andrew won 2 of 4 games at his own house and finished +$14.00."
+      ],
+      [
+        "\ud83c\udf19",
+        "Midnight comeback",
+        "Andy was last at \u2212$6.20, then won the late game +$9.85 and finished second."
       ],
       [
         "\ud83d\udca5",
         "Biggest hand of the night",
-        "Andrew +$14.50 in Game 3, which flipped the whole leaderboard."
+        "Andrew +$14.50 in Game 3."
       ],
       [
         "\ud83e\uddca",
         "The streak is over",
-        "Chris won six straight games, then finished last in Game 3."
+        "Chris won six straight games, then lost the last two."
+      ],
+      [
+        "\ud83d\udcc9",
+        "All-time leader, last tonight",
+        "John finished last at \u2212$10.25, and Game 2 was a five-cent loss."
       ],
       [
         "\ud83c\udd95",
         "Newcomer report",
-        "Tim: \u2212$6, then +$3.95, done at \u2212$2.05. He'll be back."
-      ],
-      [
-        "\ud83e\ude99",
-        "Smallest loss of the night",
-        "John lost Game 2 by exactly five cents."
+        "Tim finished \u2212$2.05 in his first night and still beat John and Chris."
       ]
     ]
   },
@@ -100,7 +105,7 @@
       ],
       [
         "2026-09-25",
-        -73.66
+        -63.81
       ]
     ],
     "John": [
@@ -210,7 +215,7 @@
       ],
       [
         "2026-09-25",
-        199.79
+        194.89
       ]
     ],
     "Andrew": [
@@ -260,7 +265,7 @@
       ],
       [
         "2026-09-25",
-        24.44
+        23.24
       ]
     ],
     "Chris": [
@@ -322,7 +327,7 @@
       ],
       [
         "2026-09-25",
-        69.99
+        66.24
       ]
     ]
   },
@@ -341,22 +346,22 @@
           "games": 0
         },
         "John": {
-          "ahead": 17,
-          "games": 34
+          "ahead": 18,
+          "games": 35
         },
         "Andy": {
           "ahead": 14,
-          "games": 26
+          "games": 27
         },
         "Andrew": {
           "ahead": 11,
-          "games": 17
+          "games": 18
         }
       },
       "John": {
         "Chris": {
           "ahead": 17,
-          "games": 34
+          "games": 35
         },
         "John": {
           "ahead": 0,
@@ -364,43 +369,43 @@
         },
         "Andy": {
           "ahead": 20,
-          "games": 34
+          "games": 35
         },
         "Andrew": {
           "ahead": 14,
-          "games": 25
+          "games": 26
         }
       },
       "Andy": {
         "Chris": {
-          "ahead": 12,
-          "games": 26
+          "ahead": 13,
+          "games": 27
         },
         "John": {
-          "ahead": 13,
-          "games": 34
+          "ahead": 14,
+          "games": 35
         },
         "Andy": {
           "ahead": 0,
           "games": 0
         },
         "Andrew": {
-          "ahead": 5,
-          "games": 14
+          "ahead": 6,
+          "games": 15
         }
       },
       "Andrew": {
         "Chris": {
-          "ahead": 6,
-          "games": 17
+          "ahead": 7,
+          "games": 18
         },
         "John": {
-          "ahead": 11,
-          "games": 25
+          "ahead": 12,
+          "games": 26
         },
         "Andy": {
           "ahead": 9,
-          "games": 14
+          "games": 15
         },
         "Andrew": {
           "ahead": 0,
@@ -412,25 +417,25 @@
       "Chris": {
         "Chris": 0.0,
         "John": -17.12,
-        "Andy": 15.98,
+        "Andy": 12.23,
         "Andrew": -4.64
       },
       "John": {
         "Chris": 17.12,
         "John": 0.0,
-        "Andy": 31.71,
+        "Andy": 26.81,
         "Andrew": -2.57
       },
       "Andy": {
-        "Chris": -15.98,
-        "John": -31.71,
+        "Chris": -12.23,
+        "John": -26.81,
         "Andy": 0.0,
-        "Andrew": -8.0
+        "Andrew": -6.8
       },
       "Andrew": {
         "Chris": 4.64,
         "John": 2.57,
-        "Andy": 8.0,
+        "Andy": 6.8,
         "Andrew": 0.0
       }
     },
@@ -444,8 +449,8 @@
       },
       {
         "name": "John",
-        "nemesis": "Demetrios",
-        "paid": 18.8,
+        "nemesis": "Andy",
+        "paid": 20.0,
         "atm": "Demetrios",
         "received": 51.86
       },
@@ -454,7 +459,7 @@
         "nemesis": "John",
         "paid": 46.81,
         "atm": "John",
-        "received": 15.1
+        "received": 20.0
       },
       {
         "name": "Andrew",
@@ -467,43 +472,43 @@
     "records": [
       {
         "name": "Chris",
-        "games": 34,
+        "games": 35,
         "win_streak": 6,
-        "streak": -1,
+        "streak": -2,
         "busts": 1,
         "rebuys": 0,
-        "avg": 2.06,
-        "cashed": 71
+        "avg": 1.89,
+        "cashed": 69
       },
       {
         "name": "John",
-        "games": 62,
+        "games": 63,
         "win_streak": 6,
-        "streak": -2,
+        "streak": -3,
         "busts": 0,
         "rebuys": 0,
-        "avg": 3.22,
+        "avg": 3.09,
         "cashed": 56
       },
       {
         "name": "Andy",
-        "games": 34,
+        "games": 35,
         "win_streak": 3,
-        "streak": 1,
+        "streak": 2,
         "busts": 3,
         "rebuys": 0,
-        "avg": -2.17,
-        "cashed": 53
+        "avg": -1.82,
+        "cashed": 54
       },
       {
         "name": "Andrew",
-        "games": 25,
+        "games": 26,
         "win_streak": 2,
-        "streak": 2,
+        "streak": -1,
         "busts": 0,
         "rebuys": 0,
-        "avg": 0.98,
-        "cashed": 44
+        "avg": 0.89,
+        "cashed": 42
       }
     ],
     "swings": {
@@ -541,7 +546,8 @@
         2.95,
         6.1,
         0.6,
-        -8.3
+        -8.3,
+        -3.75
       ],
       "John": [
         -0.02,
@@ -605,7 +611,8 @@
         3.1,
         1.35,
         -0.05,
-        -6.65
+        -6.65,
+        -4.9
       ],
       "Andy": [
         0.01,
@@ -641,7 +648,8 @@
         -20.0,
         1.15,
         -7.8,
-        0.45
+        0.45,
+        9.85
       ],
       "Andrew": [
         -3.6,
@@ -668,7 +676,8 @@
         8.5,
         -2.6,
         3.3,
-        14.5
+        14.5,
+        -1.2
       ]
     },
     "months": {
@@ -705,7 +714,7 @@
           null,
           2.8,
           null,
-          8.07
+          4.32
         ],
         "John": [
           -1.57,
@@ -722,7 +731,7 @@
           -2.58,
           30.55,
           23.02,
-          16.62
+          11.72
         ],
         "Andy": [
           0.01,
@@ -739,7 +748,7 @@
           null,
           0.45,
           null,
-          -6.2
+          3.65
         ],
         "Andrew": [
           null,
@@ -756,7 +765,7 @@
           -11.48,
           null,
           null,
-          23.52
+          22.32
         ]
       }
     },
@@ -952,28 +961,68 @@
           "Chris": "\u2212$8.30. Six-game streak, gone, and in last place. The heater is off."
         }
       }
+    },
+    {
+      "n": 4,
+      "id": 562,
+      "players": [
+        {
+          "name": "Andy",
+          "buy_in": 20.0,
+          "cashout": 29.85,
+          "net": 9.85
+        },
+        {
+          "name": "Andrew",
+          "buy_in": 20.0,
+          "cashout": 18.8,
+          "net": -1.2
+        },
+        {
+          "name": "Chris",
+          "buy_in": 20.0,
+          "cashout": 16.25,
+          "net": -3.75
+        },
+        {
+          "name": "John",
+          "buy_in": 20.0,
+          "cashout": 15.1,
+          "net": -4.9
+        }
+      ],
+      "recap": {
+        "headline": "Andy's midnight comeback",
+        "recap": "Andy won the late game with +$9.85 and went from last place to second for the night. John lost again and finished the night in last.",
+        "lines": {
+          "Andy": "+$9.85. Down $6.20 at 11pm, finished up $3.65. Best comeback of the night.",
+          "Andrew": "\u2212$1.20. Lost a little of what he won earlier. He's still the champion.",
+          "Chris": "\u2212$3.75. Won six straight going into Game 3, then lost the last two.",
+          "John": "\u2212$4.90. The all-time leader paid Andy and ended the night in last place."
+        }
+      }
     }
   ],
   "standings": [
     {
       "name": "Andrew",
-      "net": 15.2,
-      "games": 3,
+      "net": 14.0,
+      "games": 4,
       "won": 2,
       "best": 14.5,
       "worst": -2.6,
-      "bought_in": 60.0,
+      "bought_in": 80.0,
       "rebuys": 0,
       "busts": 0
     },
     {
-      "name": "Chris",
-      "net": -1.6,
-      "games": 3,
-      "won": 2,
-      "best": 6.1,
-      "worst": -8.3,
-      "bought_in": 60.0,
+      "name": "Andy",
+      "net": 3.65,
+      "games": 4,
+      "won": 3,
+      "best": 9.85,
+      "worst": -7.8,
+      "bought_in": 80.0,
       "rebuys": 0,
       "busts": 0
     },
@@ -989,99 +1038,99 @@
       "busts": 0
     },
     {
-      "name": "John",
+      "name": "Chris",
       "net": -5.35,
-      "games": 3,
-      "won": 1,
-      "best": 1.35,
-      "worst": -6.65,
-      "bought_in": 60.0,
+      "games": 4,
+      "won": 2,
+      "best": 6.1,
+      "worst": -8.3,
+      "bought_in": 80.0,
       "rebuys": 0,
       "busts": 0
     },
     {
-      "name": "Andy",
-      "net": -6.2,
-      "games": 3,
-      "won": 2,
-      "best": 1.15,
-      "worst": -7.8,
-      "bought_in": 60.0,
+      "name": "John",
+      "net": -10.25,
+      "games": 4,
+      "won": 1,
+      "best": 1.35,
+      "worst": -6.65,
+      "bought_in": 80.0,
       "rebuys": 0,
       "busts": 0
     }
   ],
   "settlements": [
     {
-      "from": "Andy",
-      "to": "Andrew",
-      "amount": 6.2
-    },
-    {
       "from": "John",
       "to": "Andrew",
-      "amount": 5.35
-    },
-    {
-      "from": "Tim",
-      "to": "Andrew",
-      "amount": 2.05
+      "amount": 10.25
     },
     {
       "from": "Chris",
       "to": "Andrew",
+      "amount": 3.75
+    },
+    {
+      "from": "Chris",
+      "to": "Andy",
       "amount": 1.6
+    },
+    {
+      "from": "Tim",
+      "to": "Andy",
+      "amount": 2.05
     }
   ],
   "featured": [
     {
       "name": "John",
-      "games": 62,
+      "games": 63,
       "wins": 35,
-      "losses": 27,
+      "losses": 28,
       "win_rate": 56,
-      "lifetime_net": 199.79,
+      "lifetime_net": 194.89,
       "best_night": 29.7,
       "worst_night": -15.4,
       "busted": 0,
-      "tonight": -5.35
+      "tonight": -10.25
     },
     {
       "name": "Chris",
-      "games": 34,
+      "games": 35,
       "wins": 24,
-      "losses": 10,
-      "win_rate": 71,
-      "lifetime_net": 69.99,
+      "losses": 11,
+      "win_rate": 69,
+      "lifetime_net": 66.24,
       "best_night": 27.6,
       "worst_night": -20.0,
       "busted": 1,
-      "tonight": -1.6
+      "tonight": -5.35
     },
     {
       "name": "Andrew",
-      "games": 25,
+      "games": 26,
       "wins": 11,
-      "losses": 14,
-      "win_rate": 44,
-      "lifetime_net": 24.44,
+      "losses": 15,
+      "win_rate": 42,
+      "lifetime_net": 23.24,
       "best_night": 14.75,
       "worst_night": -10.4,
       "busted": 0,
-      "tonight": 15.2
+      "tonight": 14.0
     },
     {
       "name": "Andy",
-      "games": 34,
-      "wins": 18,
+      "games": 35,
+      "wins": 19,
       "losses": 16,
-      "win_rate": 53,
-      "lifetime_net": -73.66,
+      "win_rate": 54,
+      "lifetime_net": -63.81,
       "best_night": 11.51,
       "worst_night": -20.0,
       "busted": 3,
-      "tonight": -6.2
+      "tonight": 3.65
     }
   ],
-  "updated_at": "2026-09-26T04:50:08+00:00"
+  "updated_at": "2026-09-26T05:56:46+00:00"
 }
