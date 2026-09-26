@@ -73,6 +73,58 @@
         "Newcomer report",
         "Tim finished −$2.05 in his first night and still beat John and Chris."
       ]
+    ],
+    "trash": [
+      [
+        "Andrew",
+        "Hosted the game, supplied the chairs, then took everyone's money. That's not hosting, that's a scheme."
+      ],
+      [
+        "Andrew",
+        "Lost Game 1 in his own house, then won $14 back. Next time we're checking the deck."
+      ],
+      [
+        "Andy",
+        "Was last at 11pm, came back for second at midnight. Somebody put Andy to bed earlier next time."
+      ],
+      [
+        "Andy",
+        "Tim paid him, Chris paid him, and nobody can explain how. Andy included."
+      ],
+      [
+        "Tim",
+        "First night at the table and finished ahead of John and Chris. The regulars have some explaining to do."
+      ],
+      [
+        "Tim",
+        "Paid $2.05 to learn the game. Cheapest poker lesson in town."
+      ],
+      [
+        "Chris",
+        "Six straight winning games, then 4th place. The heater is off and the fridge is on."
+      ],
+      [
+        "Chris",
+        "Won six in a row going into Game 3, then lost to the host and the newcomer. That's a humbling."
+      ],
+      [
+        "John",
+        "All-time leader, dead last tonight. The trophy case will need a closer look."
+      ],
+      [
+        "John",
+        "Lost Game 2 by exactly five cents, then lost $10 overall. He built the scoreboard and still finished last."
+      ]
+    ],
+    "ticker": [
+      "BREAKING: Host takes $14 from his own guests, calls it \"hospitality\"",
+      "MARKETS: Andy stock rebounds $9.85 in a midnight rally",
+      "SPORTS: Chris's six-game win streak dies in Game 3",
+      "LOCAL: Man who built the scoreboard finishes last on it",
+      "WEATHER: Cold streak moving through Chris's seat",
+      "ROOKIE WATCH: Tim beats John and Chris in his first night",
+      "CORRECTION: John's Game 2 loss was five cents. Still counts.",
+      "ADVISORY: Do not let Andrew host again without an audit"
     ]
   }
 }

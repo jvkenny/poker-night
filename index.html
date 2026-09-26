@@ -278,6 +278,22 @@
   @keyframes fb { from { opacity: .9; } to { opacity: 0; } }
   #confetti { position: fixed; inset: 0; z-index: 22; pointer-events: none; }
 
+  /* finale trash talk */
+  body.finale main { grid-template-rows: auto minmax(0, 1fr) auto; }
+  .quote { margin-top: calc(var(--u) * 1.2); padding: 0 calc(var(--u) * 2.5); min-height: calc(var(--u) * 8); transition: opacity .5s, transform .5s; }
+  .quote.out { opacity: 0; transform: translateY(1vh); }
+  .quote .q { font-family: "DM Serif Display", serif; font-size: calc(var(--u) * 1.75); line-height: 1.2; }
+  .quote .q::before { content: "“"; color: var(--gold); }
+  .quote .q::after { content: "”"; color: var(--gold); }
+  .quote .by { margin-top: .5em; font-family: "JetBrains Mono", monospace; letter-spacing: .2em; font-size: calc(var(--u) * .85); text-transform: uppercase; }
+  .ticker { display: none; overflow: hidden; border-radius: calc(var(--u) * .8); background: #b8322a; white-space: nowrap; }
+  body.finale .ticker { display: flex; }
+  .ticker .tag { flex: none; background: #f4efe3; color: #7a1a14; font-family: "JetBrains Mono", monospace; font-weight: 700; letter-spacing: .15em; padding: calc(var(--u) * .5) calc(var(--u) * 1.2); font-size: calc(var(--u) * 1.05); z-index: 1; }
+  .ticker .run { display: inline-block; padding-left: 100%; animation: crawl var(--dur, 90s) linear infinite; font-family: "JetBrains Mono", monospace; font-weight: 700; color: #fff; font-size: calc(var(--u) * 1.1); line-height: calc(var(--u) * 2.3); }
+  .ticker .run span { margin-right: 4em; }
+  .ticker .run span::before { content: "♠ "; color: #ffd9d2; }
+  @keyframes crawl { to { transform: translateX(-100%); } }
+
   @media (prefers-reduced-motion: reduce) {
     .player, .suits span, .live-dot, .newcomer, .newcomer::before, .stamp, .roast, .recap-big { animation: none !important; }
   }
@@ -301,6 +317,7 @@
   </header>
   <section class="crew" id="crew"></section>
   <section class="night" id="night"></section>
+  <div class="ticker" id="ticker"><span class="tag">LIVE · TRASH TALK</span><div style="overflow:hidden;flex:1"><div class="run" id="ticker-run"></div></div></div>
 </main>
 <div id="overlay" class="overlay" aria-live="polite"></div>
 <div id="reveal" class="reveal" aria-live="polite"></div>
@@ -648,6 +665,7 @@ function renderFinale(d) {
       <div class="nm">${esc(champ.name)}</div>
       <div class="amt">${money(champ.net)}</div>
       <div class="kick">${esc(F.kicker || "")} · won ${champ.won} of ${champ.games} games</div>
+      <div class="quote" id="quote"></div>
     </div></div>
     <div class="fin-right">
       <div class="panel"><div class="ptitle">Final standings · ${d.games.length} games</div>${bars}</div>
@@ -706,6 +724,32 @@ function confetti(ms) {
   })(t0);
 }
 setInterval(() => { if (lastData && lastData.final) playReveal(lastData); }, 180000);
+
+
+// rotating roast quote in the champion card + the news ticker
+let quoteIdx = 0;
+function showQuote(animate) {
+  const el = document.getElementById("quote"), T = lastData?.finale?.trash || [];
+  if (!el || !T.length) return;
+  const put = () => {
+    const [who, line] = T[quoteIdx % T.length];
+    el.innerHTML = `<div class="q">${esc(line)}</div><div class="by" style="color:${colors[who] || "var(--gold)"}">on ${esc(who)}</div>`;
+    el.classList.remove("out");
+  };
+  if (!animate) return put();
+  el.classList.add("out");
+  setTimeout(put, 500);
+}
+setInterval(() => { if (lastData && lastData.final) { quoteIdx++; showQuote(true); } }, 8000);
+function renderTicker(d) {
+  const run = document.getElementById("ticker-run"), items = d.finale?.ticker || [];
+  if (!run) return;
+  const html = items.map(t => `<span>${esc(t)}</span>`).join("");
+  if (run.dataset.html === html) return;       // keep the crawl smooth across data reloads
+  run.dataset.html = html;
+  run.innerHTML = html;
+  run.style.setProperty("--dur", Math.max(40, items.join(" ").length * 0.22) + "s");
+}
 
 // Full-screen recap once per game, and again when the real roast replaces the auto one.
 let shown = null;
@@ -771,7 +815,7 @@ async function load() {
     fit();
     setTimeout(fit, 800);
     if (!first) night.querySelectorAll(".panel").forEach(p => p.classList.add("flash"));
-    if (d.final && d.games.length) { if (first || !lastFinal) playReveal(d); lastFinal = true; }
+    if (d.final && d.games.length) { showQuote(false); renderTicker(d); if (first || !lastFinal) playReveal(d); lastFinal = true; }
     else maybeShowRecap(d, first);
     document.getElementById("updated").textContent =
       "Updated " + new Date(d.updated_at).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
