@@ -815,13 +815,15 @@
         }
       ],
       "recap": {
-        "headline": "Chris takes Game 1",
-        "recap": "Chris walks away up $6.10; Tim is funding tonight's snacks.",
+        "headline": "Chris extends the heater to five",
+        "recap": "Five straight winning games for Chris, which ties his all-time record. Tim got a warm welcome: $6 straight into Chris's pocket.",
         "lines": {
-          "Chris": "Took the pot for $6.10. Insufferable for at least a week.",
-          "Tim": "Donated $6.00 to the cause. Generous. Tragic."
-        },
-        "auto": true
+          "Chris": "+$6.10 and a five-game win streak. At this point he's not playing poker, he's collecting rent.",
+          "John": "+$1.35. The all-time leader showed up, took a toll, and left. Classic.",
+          "Andy": "+$1.15! Andy finished in the green. Screenshot it, frame it, this might not happen again till spring.",
+          "Andrew": "\u2212$2.60 in his own house. Hosted the game, supplied the table, and paid the cover charge too.",
+          "Tim": "Welcome to the table, Tim. That'll be $6, paid directly to Chris. Every newcomer's first lesson."
+        }
       }
     }
   ],
@@ -954,5 +956,5 @@
       "tonight": 1.15
     }
   ],
-  "updated_at": "2026-09-26T02:11:52+00:00"
+  "updated_at": "2026-09-26T02:12:16+00:00"
 }
