@@ -227,6 +227,57 @@
   .tape .shame { color: var(--down); }
   .tape .shame::before { content: "💀 "; }
 
+  /* ---- finale ---- */
+  body.finale .crew { display: none; }
+  .fin { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: calc(var(--u) * 1.4); min-height: 0; grid-column: 1 / -1; }
+  .champ {
+    position: relative; overflow: hidden; text-align: center; display: grid; place-items: center;
+    border-radius: calc(var(--u) * 1.6); border: 2px solid var(--gold);
+    background: radial-gradient(ellipse at 50% 30%, rgba(232,196,106,0.35), rgba(6,36,24,0.9) 65%);
+    animation: glow 3s ease-in-out infinite;
+  }
+  .champ::before { content: ""; position: absolute; inset: -50%; background: conic-gradient(from 0deg, transparent 0 60%, rgba(232,196,106,0.25) 75%, transparent 90%); animation: spin 7s linear infinite; }
+  .champ > div { position: relative; }
+  .champ .crownbig { font-size: calc(var(--u) * 7); color: var(--gold); line-height: 1; animation: bob 2.4s ease-in-out infinite; text-shadow: 0 0 4vh rgba(232,196,106,0.6); }
+  @keyframes bob { 50% { transform: translateY(-1.2vh) rotate(4deg); } }
+  .champ .k { font-family: "JetBrains Mono", monospace; letter-spacing: .35em; color: var(--gold); font-size: calc(var(--u) * 1.05); text-transform: uppercase; }
+  .champ .nm { font-family: "DM Serif Display", serif; font-size: calc(var(--u) * 8.5); line-height: 1; margin: .1em 0; }
+  .champ .amt { font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: calc(var(--u) * 3.6); color: var(--up); }
+  .champ .kick { color: var(--muted); font-size: calc(var(--u) * 1.3); margin-top: .6em; font-style: italic; }
+  .fin-right { display: grid; grid-template-rows: auto auto minmax(0, 1fr); gap: calc(var(--u) * 1.2); min-height: 0; }
+  .fbar { display: grid; grid-template-columns: calc(var(--u) * 2.4) calc(var(--u) * 7) minmax(0, 1fr) calc(var(--u) * 7) ; align-items: center; gap: calc(var(--u) * .8); font-size: calc(var(--u) * 1.4); padding: calc(var(--u) * .35) 0; }
+  .fbar .pl { font-family: "JetBrains Mono", monospace; color: var(--muted); font-size: calc(var(--u) * 1.1); }
+  .fbar .axis { position: relative; height: calc(var(--u) * 1.8); }
+  .fbar .axis::before { content: ""; position: absolute; left: 50%; top: -20%; bottom: -20%; border-left: 1px dashed rgba(244,239,227,.35); }
+  .fbar .b { position: absolute; top: 0; bottom: 0; border-radius: 4px; }
+  .fbar .v { font-family: "JetBrains Mono", monospace; text-align: right; font-weight: 700; }
+  .notes { display: grid; grid-template-columns: 1fr 1fr; gap: calc(var(--u) * .8) calc(var(--u) * 1.4); align-content: start; }
+  .note { display: grid; grid-template-columns: calc(var(--u) * 2.4) 1fr; gap: calc(var(--u) * .6); }
+  .note .i { font-size: calc(var(--u) * 1.8); line-height: 1; }
+  .note b { display: block; font-size: calc(var(--u) * 1.1); }
+  .note span { color: var(--muted); font-size: calc(var(--u) * .95); }
+
+  /* reveal sequence */
+  .reveal { position: fixed; inset: 0; z-index: 20; background: #020d08; display: grid; place-items: center; opacity: 0; pointer-events: none; transition: opacity .8s; }
+  .reveal.on { opacity: 1; pointer-events: auto; }
+  .reveal .stage { text-align: center; width: min(90vw, 160vh); }
+  .reveal .title { font-family: "JetBrains Mono", monospace; letter-spacing: .5em; color: var(--gold); font-size: calc(var(--u) * 1.6); text-transform: uppercase; }
+  .reveal .big { font-family: "DM Serif Display", serif; font-size: calc(var(--u) * 9); line-height: 1; margin-top: .2em; }
+  .reveal .place { display: grid; grid-template-columns: calc(var(--u) * 8) 1fr auto; align-items: baseline; gap: 2vw; text-align: left; padding: calc(var(--u) * .8) calc(var(--u) * 2); border-bottom: 1px solid var(--line); font-size: calc(var(--u) * 3); animation: slam .7s cubic-bezier(.2,1.6,.4,1) both; }
+  .reveal .place .n { font-family: "JetBrains Mono", monospace; color: var(--muted); }
+  .reveal .place .who { font-family: "DM Serif Display", serif; }
+  .reveal .place .m { font-family: "JetBrains Mono", monospace; font-weight: 700; }
+  @keyframes slam { from { opacity: 0; transform: translateX(-12vw) scale(1.2); } }
+  .reveal .drum { font-family: "DM Serif Display", serif; font-size: calc(var(--u) * 5); animation: shake .12s linear infinite; }
+  @keyframes shake { 25% { transform: translate(2px, -2px); } 50% { transform: translate(-2px, 1px); } 75% { transform: translate(1px, 2px); } }
+  .reveal .winner { animation: boom 1.1s cubic-bezier(.2,1.8,.4,1) both; }
+  .reveal .winner .big { font-size: calc(var(--u) * 16); color: var(--gold); text-shadow: 0 0 6vh rgba(232,196,106,.7); }
+  .reveal .winner .m { font-family: "JetBrains Mono", monospace; font-size: calc(var(--u) * 5); color: var(--up); font-weight: 700; }
+  @keyframes boom { from { opacity: 0; transform: scale(3.5); filter: blur(10px); } }
+  .flashbang { position: fixed; inset: 0; background: #fff4cf; z-index: 21; pointer-events: none; animation: fb 1.2s ease-out forwards; }
+  @keyframes fb { from { opacity: .9; } to { opacity: 0; } }
+  #confetti { position: fixed; inset: 0; z-index: 22; pointer-events: none; }
+
   @media (prefers-reduced-motion: reduce) {
     .player, .suits span, .live-dot, .newcomer, .newcomer::before, .stamp, .roast, .recap-big { animation: none !important; }
   }
@@ -252,6 +303,8 @@
   <section class="night" id="night"></section>
 </main>
 <div id="overlay" class="overlay" aria-live="polite"></div>
+<div id="reveal" class="reveal" aria-live="polite"></div>
+<canvas id="confetti"></canvas>
 
 <script>
 const money = v => (v > 0 ? "+" : v < 0 ? "−" : "") + "$" + Math.abs(v).toFixed(2);
@@ -260,6 +313,7 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;",
 let lastStamp = null;
 let colors = {};
 let lastData = null;
+let lastFinal = false;
 
 function crewCard(p, i) {
   return `
@@ -303,6 +357,7 @@ function recapBlock(g, big) {
 }
 
 function renderNight(d) {
+  if (d.final && d.games.length) return renderFinale(d);
   if (!d.games.length) {
     return `<div class="panel chart">
       <div class="chart-head">
@@ -572,6 +627,86 @@ function nextSlide() {
 }
 setInterval(nextSlide, SLIDE_MS);
 
+
+// ---- finale: countdown reveal, champion, confetti, final board -------------
+function renderFinale(d) {
+  const st = d.standings, champ = st[0], F = d.finale || {};
+  const max = Math.max(...st.map(s => Math.abs(s.net)), 1);
+  const bars = st.map((s, i) => {
+    const w = Math.abs(s.net) / max * 50;
+    const pos = s.net >= 0 ? `left:50%;width:${w}%` : `right:50%;width:${w}%`;
+    return `<div class="fbar"><span class="pl">${i + 1}${["st","nd","rd"][i] || "th"}</span>${cname(s.name)}
+      <div class="axis"><div class="b grow" style="${pos};background:${s.net >= 0 ? "var(--up)" : "var(--down)"};transform-origin:${s.net >= 0 ? "left" : "right"};animation-delay:${i * .12}s"></div></div>
+      <span class="v ${cls(s.net)}">${money(s.net)}</span></div>`;
+  }).join("");
+  const pays = d.settlements.map(t => `<div class="pay"><span>${esc(t.from)} <span class="arrow">→</span> ${esc(t.to)}</span><span class="mono">$${t.amount.toFixed(2)}</span></div>`).join("");
+  const notes = (F.notes || []).map(([i, b, t]) => `<div class="note"><span class="i">${i}</span><div><b>${esc(b)}</b><span>${esc(t)}</span></div></div>`).join("");
+  return `<div class="fin">
+    <div class="champ"><div>
+      <div class="crownbig">♛</div>
+      <div class="k">Champion of the night</div>
+      <div class="nm">${esc(champ.name)}</div>
+      <div class="amt">${money(champ.net)}</div>
+      <div class="kick">${esc(F.kicker || "")} · won ${champ.won} of ${champ.games} games</div>
+    </div></div>
+    <div class="fin-right">
+      <div class="panel"><div class="ptitle">Final standings · ${d.games.length} games</div>${bars}</div>
+      <div class="panel"><div class="ptitle">Settle up</div><div class="pays">${pays}</div></div>
+      <div class="panel"><div class="ptitle">Tonight's headlines</div><div class="notes">${notes}</div></div>
+    </div></div>`;
+}
+
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+let revealing = false;
+async function playReveal(d) {
+  if (revealing || !d.final) return;
+  revealing = true;
+  const R = document.getElementById("reveal");
+  const st = d.standings;
+  const ord = n => n + (["st","nd","rd"][n - 1] || "th");
+  R.innerHTML = `<div class="stage"><div class="title">Final results</div><div class="big">Poker Night at ${esc(d.host)}</div></div>`;
+  R.classList.add("on");
+  await sleep(3200);
+  R.innerHTML = `<div class="stage"><div class="title">The standings</div><div id="places" style="margin-top:4vh"></div></div>`;
+  const places = R.querySelector("#places");
+  for (let i = st.length - 1; i >= 1; i--) {
+    const s = st[i];
+    places.insertAdjacentHTML("afterbegin", `<div class="place"><span class="n">${ord(i + 1)}</span><span class="who" style="color:${colors[s.name] || "var(--ink)"}">${esc(s.name)}</span><span class="m ${cls(s.net)}">${money(s.net)}</span></div>`);
+    await sleep(1900);
+  }
+  R.innerHTML = `<div class="stage"><div class="title">And your champion of the night</div><div class="drum" style="margin-top:4vh">🥁 . . .</div></div>`;
+  await sleep(2600);
+  document.body.insertAdjacentHTML("beforeend", `<div class="flashbang"></div>`);
+  setTimeout(() => document.querySelector(".flashbang")?.remove(), 1300);
+  R.innerHTML = `<div class="stage winner"><div class="title">♛ Champion ♛</div><div class="big">${esc(st[0].name)}</div><div class="m">${money(st[0].net)}</div></div>`;
+  confetti(7000);
+  await sleep(7500);
+  R.classList.remove("on");
+  revealing = false;
+}
+
+function confetti(ms) {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const cv = document.getElementById("confetti"), ctx = cv.getContext("2d");
+  cv.width = innerWidth; cv.height = innerHeight;
+  const pal = ["#e8c46a", "#fff4cf", "#7fe0a4", ...Object.values(colors)];
+  const P = Array.from({ length: 320 }, () => ({
+    x: innerWidth / 2 + (Math.random() - .5) * innerWidth * .3, y: innerHeight * .45,
+    vx: (Math.random() - .5) * 26, vy: -Math.random() * 26 - 6, r: Math.random() * 6 + 4,
+    a: Math.random() * 6, va: (Math.random() - .5) * .4, c: pal[Math.floor(Math.random() * pal.length)] }));
+  const t0 = performance.now();
+  (function frame(t) {
+    ctx.clearRect(0, 0, cv.width, cv.height);
+    P.forEach(p => {
+      p.vy += .55; p.vx *= .99; p.x += p.vx; p.y += p.vy; p.a += p.va;
+      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.a); ctx.fillStyle = p.c;
+      ctx.fillRect(-p.r, -p.r / 2.5, p.r * 2, p.r / 1.25); ctx.restore();
+    });
+    if (t - t0 < ms) requestAnimationFrame(frame); else ctx.clearRect(0, 0, cv.width, cv.height);
+  })(t0);
+}
+setInterval(() => { if (lastData && lastData.final) playReveal(lastData); }, 180000);
+
 // Full-screen recap once per game, and again when the real roast replaces the auto one.
 let shown = null;
 const recapKey = g => g.id + ":" + ((g.recap || {}).auto ? "a" : "r");
@@ -591,7 +726,7 @@ function playRecap(g) {
   ov._t = setTimeout(() => ov.classList.remove("on"), 35000);
 }
 setInterval(() => {
-  if (lastData && lastData.games.length) playRecap(lastData.games[lastData.games.length - 1]);
+  if (lastData && lastData.games.length && !lastData.final) playRecap(lastData.games[lastData.games.length - 1]);
 }, 240000);
 document.getElementById("overlay").addEventListener("click", e => e.currentTarget.classList.remove("on"));
 
@@ -621,19 +756,23 @@ async function load() {
     document.getElementById("eyebrow").textContent =
       new Date(d.date + "T12:00:00").toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" });
     document.getElementById("title").textContent = `${d.title} at ${d.host}`;
-    document.getElementById("status").innerHTML = d.games.length
+    document.getElementById("status").innerHTML = d.final && d.games.length
+      ? `Final · ${d.games.length} games · thanks for playing`
+      : d.games.length
       ? `<span class="live-dot"></span>Live · ${d.games.length} game${d.games.length > 1 ? "s" : ""} in the books`
       : "Getting set up";
     document.getElementById("crew").innerHTML =
       d.featured.map(crewCard).join("") + (d.newcomers || []).map(newcomerCard).join("");
     document.body.classList.toggle("pregame", !d.games.length);
+    document.body.classList.toggle("finale", !!(d.final && d.games.length));
     const night = document.getElementById("night");
     night.innerHTML = renderNight(d);
     if (!d.games.length) renderSlide(false);
     fit();
     setTimeout(fit, 800);
     if (!first) night.querySelectorAll(".panel").forEach(p => p.classList.add("flash"));
-    maybeShowRecap(d, first);
+    if (d.final && d.games.length) { if (first || !lastFinal) playReveal(d); lastFinal = true; }
+    else maybeShowRecap(d, first);
     document.getElementById("updated").textContent =
       "Updated " + new Date(d.updated_at).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
   } catch (e) {

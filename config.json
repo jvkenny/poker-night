@@ -35,9 +35,39 @@
     "John": "#3987e5",
     "Andy": "#d95926",
     "Chris": "#199e70",
-    "Andrew": "#c98500"
+    "Andrew": "#c98500",
+    "Tim": "#d55181"
   },
-  "exclude_game_ids": [
-    560
-  ]
+  "exclude_game_ids": [],
+  "final": true,
+  "finale": {
+    "kicker": "The house always wins",
+    "notes": [
+      [
+        "👑",
+        "Host wins his own game",
+        "Lost Game 1 in his own house, won 2 of 3 and finished +$15.20."
+      ],
+      [
+        "💥",
+        "Biggest hand of the night",
+        "Andrew +$14.50 in Game 3, which flipped the whole leaderboard."
+      ],
+      [
+        "🧊",
+        "The streak is over",
+        "Chris won six straight games, then finished last in Game 3."
+      ],
+      [
+        "🆕",
+        "Newcomer report",
+        "Tim: −$6, then +$3.95, done at −$2.05. He'll be back."
+      ],
+      [
+        "🪙",
+        "Smallest loss of the night",
+        "John lost Game 2 by exactly five cents."
+      ]
+    ]
+  }
 }

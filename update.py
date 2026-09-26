@@ -148,6 +148,8 @@ def build() -> dict:
 
     return {
         "newcomers": newcomers,
+        "final": CONFIG.get("final", False),
+        "finale": CONFIG.get("finale"),
         "history": history(CONFIG["featured"]),
         "colors": CONFIG.get("colors", {}),
         "stats": stats.compute(ss, CONFIG["featured"], display),
