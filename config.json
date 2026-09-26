@@ -36,5 +36,8 @@
     "Andy": "#d95926",
     "Chris": "#199e70",
     "Andrew": "#c98500"
-  }
+  },
+  "exclude_game_ids": [
+    560
+  ]
 }

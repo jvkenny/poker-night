@@ -96,8 +96,8 @@ def history(usernames: list[str]) -> dict:
 def build() -> dict:
     with ss._conn() as c:
         ids = [r["id"] for r in c.execute(
-            "SELECT id FROM games WHERE id > %s ORDER BY start_time, id",
-            (CONFIG["baseline_game_id"],)).fetchall()]
+            "SELECT id FROM games WHERE id > %s AND NOT (id = ANY(%s)) ORDER BY start_time, id",
+            (CONFIG["baseline_game_id"], CONFIG.get("exclude_game_ids", []))).fetchall()]
 
     games, totals, played = [], {}, {}
     for n, gid in enumerate(ids, 1):
