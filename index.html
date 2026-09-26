@@ -109,7 +109,7 @@
   @keyframes shimmer { to { background-position: -200% 0; } }
 
   /* tonight */
-  .night { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: calc(var(--u) * 1.2); min-height: 0; }
+  .night { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: calc(var(--u) * 1.2); min-height: 0; }
   .right { display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: calc(var(--u) * 1.2); min-height: 0; }
   table { width: 100%; border-collapse: collapse; }
   td, th { padding: calc(var(--u) * 0.45) calc(var(--u) * 0.3); text-align: left; font-size: calc(var(--u) * 1.15); white-space: nowrap; }
@@ -121,8 +121,8 @@
   .pay { display: flex; justify-content: space-between; gap: 1em; padding: calc(var(--u) * 0.3) 0; font-size: calc(var(--u) * 1.1); border-top: 1px solid var(--line); }
   .pay .arrow { color: var(--muted); }
   .headline { font-family: "DM Serif Display", serif; font-size: calc(var(--u) * 2.4); line-height: 1.1; }
-  .recap-text { font-size: calc(var(--u) * 1.1); margin: calc(var(--u) * 0.4) 0 calc(var(--u) * 0.6); }
-  .roast { display: grid; grid-template-columns: calc(var(--u) * 7) 1fr; gap: calc(var(--u) * 0.8); padding: calc(var(--u) * 0.35) 0; border-top: 1px solid var(--line); font-size: calc(var(--u) * 0.98); }
+  .recap-text { font-size: calc(var(--u) * 1.3); margin: calc(var(--u) * 0.4) 0 calc(var(--u) * 0.6); }
+  .roast { display: grid; grid-template-columns: calc(var(--u) * 7) 1fr; gap: calc(var(--u) * 0.8); padding: calc(var(--u) * 0.45) 0; border-top: 1px solid var(--line); font-size: calc(var(--u) * 1.25); }
   .roast .who { font-weight: 700; color: var(--gold); }
   .recap .mini { margin-top: calc(var(--u) * 0.6); }
   .recap .mini td { font-size: calc(var(--u) * 0.9); padding: calc(var(--u) * 0.2) calc(var(--u) * 0.3); }
@@ -579,15 +579,20 @@ function maybeShowRecap(d, first) {
   if (!d.games.length) return;
   const g = d.games[d.games.length - 1];
   const key = recapKey(g);
-  if (first) { shown = key; return; }
   if (key === shown) return;
   shown = key;
+  playRecap(g);
+}
+function playRecap(g) {
   const ov = document.getElementById("overlay");
   ov.innerHTML = recapBlock(g, true);
   ov.classList.add("on");
   clearTimeout(ov._t);
   ov._t = setTimeout(() => ov.classList.remove("on"), 35000);
 }
+setInterval(() => {
+  if (lastData && lastData.games.length) playRecap(lastData.games[lastData.games.length - 1]);
+}, 240000);
 document.getElementById("overlay").addEventListener("click", e => e.currentTarget.classList.remove("on"));
 
 // Shrink a panel's text a notch at a time if a big table ever overflows it.
