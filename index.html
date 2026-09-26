@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Poker Night</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Instrument+Sans:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --felt: #0d3b2a;
+    --felt-deep: #062418;
+    --ink: #f4efe3;
+    --muted: #a9bfb2;
+    --line: rgba(244, 239, 227, 0.14);
+    --card: rgba(6, 36, 24, 0.72);
+    --gold: #e8c46a;
+    --up: #7fe0a4;
+    --down: #ff8a7a;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse at 50% 20%, #17583f 0%, var(--felt) 45%, var(--felt-deep) 100%);
+    background-color: var(--felt-deep);
+    color: var(--ink);
+    font-family: "Instrument Sans", system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+  .suits {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    font-size: 8vw; color: rgba(244, 239, 227, 0.035);
+  }
+  .suits span { position: absolute; animation: drift 28s linear infinite; }
+  @keyframes drift {
+    from { transform: translateY(110vh) rotate(0deg); }
+    to   { transform: translateY(-20vh) rotate(360deg); }
+  }
+  main { position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: 4vh 16px 6vh; }
+
+  header { text-align: center; margin-bottom: 4vh; }
+  .eyebrow {
+    font-family: "JetBrains Mono", monospace; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); font-size: clamp(12px, 1.1vw, 18px);
+  }
+  h1 {
+    font-family: "DM Serif Display", serif; font-weight: 400; margin: 0.2em 0 0.1em;
+    font-size: clamp(44px, 7vw, 120px); line-height: 1;
+  }
+  .status { color: var(--muted); font-size: clamp(14px, 1.3vw, 22px); }
+  .live-dot {
+    display: inline-block; width: 0.6em; height: 0.6em; border-radius: 50%;
+    background: var(--down); margin-right: 0.4em; vertical-align: middle;
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse { 50% { opacity: 0.25; } }
+
+  h2 {
+    font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: clamp(12px, 1vw, 16px);
+    letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted);
+    margin: 5vh 0 2vh; display: flex; align-items: center; gap: 1em;
+  }
+  h2::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+  .players { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2vw; }
+  .player {
+    background: var(--card); border: 1px solid var(--line); border-radius: 22px;
+    padding: clamp(18px, 2vw, 32px); backdrop-filter: blur(6px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    animation: float 6s ease-in-out infinite;
+  }
+  .player:nth-child(2) { animation-delay: -1.5s; }
+  .player:nth-child(3) { animation-delay: -3s; }
+  .player:nth-child(4) { animation-delay: -4.5s; }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(-0.4deg); }
+    50%      { transform: translateY(-14px) rotate(0.4deg); }
+  }
+  .rank { font-family: "JetBrains Mono", monospace; color: var(--gold); font-size: clamp(12px, 1vw, 16px); }
+  .pname { font-family: "DM Serif Display", serif; font-size: clamp(32px, 3.4vw, 58px); line-height: 1.05; margin: 0.1em 0 0.2em; }
+  .big { font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: clamp(26px, 2.6vw, 44px); }
+  .label { color: var(--muted); font-size: clamp(11px, 0.9vw, 14px); text-transform: uppercase; letter-spacing: 0.12em; }
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); }
+  .stats .v { font-family: "JetBrains Mono", monospace; font-size: clamp(16px, 1.4vw, 24px); }
+  .tonight { margin-top: 16px; padding: 10px 14px; border-radius: 12px; background: rgba(232, 196, 106, 0.12); display: flex; justify-content: space-between; align-items: baseline; }
+  .up { color: var(--up); } .down { color: var(--down); }
+
+  .night { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 2vw; }
+  @media (max-width: 900px) { .night { grid-template-columns: 1fr; } }
+  .panel { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: clamp(16px, 1.8vw, 28px); }
+  table { width: 100%; border-collapse: collapse; }
+  td, th { padding: 0.55em 0.4em; text-align: left; font-size: clamp(15px, 1.4vw, 24px); }
+  th { color: var(--muted); font-weight: 600; font-size: clamp(11px, 0.9vw, 14px); text-transform: uppercase; letter-spacing: 0.12em; }
+  tr + tr td { border-top: 1px solid var(--line); }
+  td.num, th.num { text-align: right; font-family: "JetBrains Mono", monospace; }
+  .crown { color: var(--gold); }
+  .pay { display: flex; justify-content: space-between; gap: 1em; padding: 0.6em 0; font-size: clamp(15px, 1.4vw, 24px); }
+  .pay + .pay { border-top: 1px solid var(--line); }
+  .pay .arrow { color: var(--muted); }
+  .games { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5vw; }
+  .game h3 { margin: 0 0 0.4em; font-family: "DM Serif Display", serif; font-weight: 400; font-size: clamp(22px, 1.8vw, 32px); }
+  .game td { font-size: clamp(14px, 1.1vw, 19px); }
+  .empty { text-align: center; color: var(--muted); font-size: clamp(16px, 1.6vw, 26px); padding: 3vh 0; }
+  footer { text-align: center; color: var(--muted); margin-top: 6vh; font-size: 13px; font-family: "JetBrains Mono", monospace; }
+  .flash { animation: flash 1.2s ease-out; }
+  @keyframes flash { from { box-shadow: 0 0 0 4px var(--gold); } }
+  @media (prefers-reduced-motion: reduce) {
+    .player, .suits span, .live-dot { animation: none; }
+  }
+</style>
+</head>
+<body>
+<div class="suits" aria-hidden="true">
+  <span style="left:6%;animation-delay:-2s">♠</span>
+  <span style="left:28%;animation-delay:-11s">♥</span>
+  <span style="left:52%;animation-delay:-19s">♣</span>
+  <span style="left:77%;animation-delay:-6s">♦</span>
+  <span style="left:90%;animation-delay:-24s">♠</span>
+</div>
+<main>
+  <header>
+    <div class="eyebrow" id="eyebrow">Tonight</div>
+    <h1 id="title">Poker Night</h1>
+    <div class="status" id="status">Loading…</div>
+  </header>
+
+  <h2>All-time</h2>
+  <section class="players" id="players"></section>
+
+  <div id="night-wrap"></div>
+
+  <footer id="updated"></footer>
+</main>
+
+<script>
+const money = v => (v > 0 ? "+" : v < 0 ? "−" : "") + "$" + Math.abs(v).toFixed(2);
+const cls = v => v > 0 ? "up" : v < 0 ? "down" : "";
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+let lastStamp = null;
+
+function renderPlayers(featured) {
+  return featured.map((p, i) => `
+    <article class="player">
+      <div class="rank">#${i + 1} ALL-TIME</div>
+      <div class="pname">${esc(p.name)}</div>
+      <div class="label">Lifetime</div>
+      <div class="big ${cls(p.lifetime_net)}">${money(p.lifetime_net)}</div>
+      <div class="stats">
+        <div><div class="label">Record</div><div class="v">${p.wins}–${p.losses}</div></div>
+        <div><div class="label">Win rate</div><div class="v">${p.win_rate}%</div></div>
+        <div><div class="label">Best</div><div class="v up">${money(p.best_night)}</div></div>
+        <div><div class="label">Worst</div><div class="v down">${money(p.worst_night)}</div></div>
+      </div>
+      ${p.tonight != null ? `<div class="tonight"><span class="label">Tonight</span><span class="big ${cls(p.tonight)}" style="font-size:clamp(20px,2vw,32px)">${money(p.tonight)}</span></div>` : ""}
+    </article>`).join("");
+}
+
+function renderNight(d) {
+  if (!d.games.length) {
+    return `<h2>Tonight</h2><div class="panel empty">Cards haven't hit the felt yet. Results land here after each game.</div>`;
+  }
+  const standings = d.standings.map((s, i) => `
+    <tr><td>${i === 0 && s.net > 0 ? '<span class="crown">♛</span> ' : ""}${esc(s.name)}</td>
+    <td class="num">${s.games}</td><td class="num ${cls(s.net)}">${money(s.net)}</td></tr>`).join("");
+  const pays = d.settlements.length
+    ? d.settlements.map(t => `<div class="pay"><span>${esc(t.from)} <span class="arrow">→</span> ${esc(t.to)}</span><span class="num" style="font-family:'JetBrains Mono',monospace">$${t.amount.toFixed(2)}</span></div>`).join("")
+    : `<div class="empty">All square.</div>`;
+  const games = [...d.games].reverse().map(g => `
+    <div class="panel game">
+      <h3>Game ${g.n}</h3>
+      <table><tr><th>Player</th><th class="num">In</th><th class="num">Out</th><th class="num">Net</th></tr>
+      ${g.players.map(p => `<tr><td>${esc(p.name)}</td><td class="num">$${p.buy_in.toFixed(0)}</td><td class="num">$${p.cashout.toFixed(2)}</td><td class="num ${cls(p.net)}">${money(p.net)}</td></tr>`).join("")}
+      </table>
+    </div>`).join("");
+  return `
+    <h2>Tonight's standings</h2>
+    <div class="night">
+      <div class="panel"><table><tr><th>Player</th><th class="num">Games</th><th class="num">Net</th></tr>${standings}</table></div>
+      <div class="panel"><div class="label" style="margin-bottom:0.6em">Who pays who</div>${pays}</div>
+    </div>
+    <h2>Games</h2>
+    <div class="games">${games}</div>`;
+}
+
+async function load() {
+  try {
+    const r = await fetch("data.json?t=" + Date.now(), { cache: "no-store" });
+    const d = await r.json();
+    if (d.updated_at === lastStamp) return;
+    const first = lastStamp === null;
+    lastStamp = d.updated_at;
+    document.title = `${d.title} at ${d.host}`;
+    document.getElementById("eyebrow").textContent =
+      new Date(d.date + "T12:00:00").toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" });
+    document.getElementById("title").textContent = `${d.title} at ${d.host}`;
+    document.getElementById("status").innerHTML = d.games.length
+      ? `<span class="live-dot"></span>Live · ${d.games.length} game${d.games.length > 1 ? "s" : ""} in the books`
+      : "Getting set up · shuffle up and deal";
+    document.getElementById("players").innerHTML = renderPlayers(d.featured);
+    const wrap = document.getElementById("night-wrap");
+    wrap.innerHTML = renderNight(d);
+    if (!first) wrap.querySelectorAll(".panel").forEach(p => p.classList.add("flash"));
+    document.getElementById("updated").textContent =
+      "Updated " + new Date(d.updated_at).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+  } catch (e) {
+    if (lastStamp === null) document.getElementById("status").textContent = "Couldn't load results. Retrying…";
+  }
+}
+load();
+setInterval(load, 30000);
+</script>
+</body>
+</html>

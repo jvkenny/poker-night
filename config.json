@@ -1,0 +1,15 @@
+{
+  "title": "Poker Night",
+  "host": "Andrew's",
+  "date": "2026-09-25",
+  "baseline_game_id": 557,
+  "featured": ["JK", "akoppalypse", "gritz88", "Andrew Grabowski"],
+  "names": {
+    "JK": "John",
+    "akoppalypse": "Andy",
+    "gritz88": "Chris",
+    "Andrew Grabowski": "Andrew",
+    "agrabowski518": "Andrew",
+    "Sam": "Sam"
+  }
+}

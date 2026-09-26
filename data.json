@@ -1,0 +1,59 @@
+{
+  "title": "Poker Night",
+  "host": "Andrew's",
+  "date": "2026-09-25",
+  "games": [],
+  "standings": [],
+  "settlements": [],
+  "featured": [
+    {
+      "name": "John",
+      "games": 59,
+      "wins": 34,
+      "losses": 25,
+      "win_rate": 58,
+      "lifetime_net": 205.14,
+      "best_night": 29.7,
+      "worst_night": -15.4,
+      "busted": 0,
+      "tonight": null
+    },
+    {
+      "name": "Chris",
+      "games": 31,
+      "wins": 22,
+      "losses": 9,
+      "win_rate": 71,
+      "lifetime_net": 71.59,
+      "best_night": 27.6,
+      "worst_night": -20.0,
+      "busted": 1,
+      "tonight": null
+    },
+    {
+      "name": "Andrew",
+      "games": 22,
+      "wins": 9,
+      "losses": 13,
+      "win_rate": 41,
+      "lifetime_net": 9.24,
+      "best_night": 14.75,
+      "worst_night": -10.4,
+      "busted": 0,
+      "tonight": null
+    },
+    {
+      "name": "Andy",
+      "games": 31,
+      "wins": 16,
+      "losses": 15,
+      "win_rate": 52,
+      "lifetime_net": -67.46,
+      "best_night": 11.51,
+      "worst_night": -20.0,
+      "busted": 3,
+      "tonight": null
+    }
+  ],
+  "updated_at": "2026-09-26T00:27:56+00:00"
+}
