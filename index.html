@@ -151,12 +151,27 @@
   .overlay.on .roast:nth-of-type(n+7) { animation-delay: 4.2s }
 
   /* pre-game: the crew cards take the stage */
-  body.pregame main { grid-template-rows: auto minmax(0, 1fr) auto; }
-  body.pregame .player { --u: calc(min(1vw, 1.78vh) * 1.3); display: flex; flex-direction: column; justify-content: center; }
-  body.pregame .crew { align-items: center; }
-  body.pregame .stats { grid-template-columns: 1fr 1fr; }
-  body.pregame .welcome { padding: calc(var(--u) * 1.4); }
-  body.pregame .welcome .headline { font-size: calc(var(--u) * 2.4); }
+  body.pregame .stats { grid-template-columns: 1fr 1fr; justify-content: stretch; }
+  .player { border-top: 0.5vh solid var(--c, var(--line)); }
+  .newcomer { border-top-width: 2px; }
+
+  /* bankroll chart */
+  .chart { display: grid; grid-template-rows: auto minmax(0, 1fr); grid-column: 1 / -1; }
+  .chart-head { display: flex; justify-content: space-between; align-items: baseline; gap: 2vw; }
+  .chart-head .sub { color: var(--muted); font-size: calc(var(--u) * 1); }
+  .legend { display: flex; gap: calc(var(--u) * 1.4); font-size: calc(var(--u) * 0.95); }
+  .legend span::before { content: ""; display: inline-block; width: 1.4em; height: 0.25em; border-radius: 1em; background: var(--c); margin-right: 0.45em; vertical-align: middle; }
+  .plot { position: relative; min-height: 0; }
+  .plot svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .plot .grid line { stroke: rgba(244,239,227,0.08); }
+  .plot .zero { stroke: rgba(244,239,227,0.35); stroke-dasharray: 4 6; }
+  .plot text { fill: var(--muted); font-family: "JetBrains Mono", monospace; }
+  .plot .series { fill: none; stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+  .plot .series.draw { stroke-dasharray: var(--len); stroke-dashoffset: var(--len); animation: drawline 2.4s ease-out forwards; }
+  @keyframes drawline { to { stroke-dashoffset: 0; } }
+  .plot .end { stroke: var(--felt-deep); stroke-width: 3; }
+  .plot .lbl-name { fill: var(--ink); font-family: "Instrument Sans", sans-serif; font-weight: 700; }
+  .plot .lbl-val { fill: var(--muted); }
 
   @media (prefers-reduced-motion: reduce) {
     .player, .suits span, .live-dot, .newcomer, .newcomer::before, .stamp, .roast, .recap-big { animation: none !important; }
@@ -189,10 +204,12 @@ const money = v => (v > 0 ? "+" : v < 0 ? "−" : "") + "$" + Math.abs(v).toFixe
 const cls = v => v > 0 ? "up" : v < 0 ? "down" : "";
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 let lastStamp = null;
+let colors = {};
+let lastData = null;
 
 function crewCard(p, i) {
   return `
-    <article class="player">
+    <article class="player" style="--c:${colors[p.name] || "var(--line)"}">
       <div class="rank">#${i + 1} OF THE CREW</div>
       <div class="pname">${esc(p.name)}</div>
       <div class="label">Lifetime</div>
@@ -233,9 +250,15 @@ function recapBlock(g, big) {
 
 function renderNight(d) {
   if (!d.games.length) {
-    return `<div class="panel welcome" style="grid-column: 1 / -1">
-      <div><div class="headline">Shuffle up and deal</div>
-      <p>Results, recaps and trash talk land here after every game.</p></div></div>`;
+    const last = n => { const h = d.history[n]; return h[h.length - 1][1]; };
+    const names = Object.keys(d.history || {}).sort((a, b) => last(b) - last(a));
+    return `<div class="panel chart">
+      <div class="chart-head">
+        <div><div class="ptitle">All-time bankroll</div>
+        <div class="sub">Cumulative winnings, night by night · results land here once the cards fly</div></div>
+        <div class="legend">${names.map(n => `<span style="--c:${colors[n]}">${esc(n)}</span>`).join("")}</div>
+      </div>
+      <div class="plot" id="plot"></div></div>`;
   }
   const standings = d.standings.map((s, i) => `
     <tr><td>${i === 0 && s.net > 0 ? '<span class="crown">♛</span> ' : ""}${esc(s.name)}</td>
@@ -260,6 +283,68 @@ function renderNight(d) {
       ${recapBlock(d.games[d.games.length - 1], false)}
       <div class="panel"><div class="ptitle">Who pays who</div><div class="pays">${pays}</div></div>
     </div>`;
+}
+
+
+// Cumulative-net line per crew member on a shared date axis, direct-labelled at the line ends.
+function drawChart(d, animate) {
+  const el = document.getElementById("plot");
+  if (!el) return;
+  const W = el.clientWidth, H = el.clientHeight;
+  if (!W || !H) return;
+  const u = Math.min(innerWidth / 100, innerHeight * 1.78 / 100);
+  const fs = u * 0.95;
+  const series = Object.entries(d.history || {}).map(([name, pts]) =>
+    ({ name, pts: pts.map(([t, v]) => [Date.parse(t + "T12:00:00"), v]) }));
+  if (!series.length) return;
+  const all = series.flatMap(s => s.pts);
+  const x0 = Math.min(...all.map(p => p[0])), x1 = Math.max(...all.map(p => p[0]));
+  let y0 = Math.min(0, ...all.map(p => p[1])), y1 = Math.max(0, ...all.map(p => p[1]));
+  const step = [10, 25, 50, 100, 200, 500].find(s => (y1 - y0) / s <= 6) || 1000;
+  y0 = Math.floor(y0 / step) * step; y1 = Math.ceil(y1 / step) * step;
+  const m = { l: fs * 4.5, r: fs * 11, t: fs * 1.2, b: fs * 2.2 };
+  const X = t => m.l + (t - x0) / Math.max(1, x1 - x0) * (W - m.l - m.r);
+  const Y = v => m.t + (y1 - v) / (y1 - y0) * (H - m.t - m.b);
+  const fmt = v => (v < 0 ? "−$" : "$") + Math.abs(v).toFixed(0);
+
+  let grid = "";
+  for (let v = y0; v <= y1 + 1e-9; v += step) {
+    grid += `<line x1="${m.l}" x2="${W - m.r}" y1="${Y(v)}" y2="${Y(v)}"/>`
+          + `<text x="${m.l - fs * 0.6}" y="${Y(v) + fs * 0.35}" text-anchor="end" font-size="${fs}">${fmt(v)}</text>`;
+  }
+  // x ticks: first of each quarter
+  let ticks = "";
+  const start = new Date(x0), end = new Date(x1);
+  for (let dt = new Date(start.getFullYear(), Math.floor(start.getMonth() / 3) * 3 + 3, 1); dt <= end; dt.setMonth(dt.getMonth() + 3)) {
+    const x = X(dt.getTime());
+    ticks += `<text x="${x}" y="${H - fs * 0.4}" text-anchor="middle" font-size="${fs}">${dt.toLocaleDateString(undefined, { month: "short", year: "2-digit" })}</text>`;
+  }
+
+  // end labels, nudged apart so they never collide
+  const ends = series.map(s => ({ s, y: Y(s.pts[s.pts.length - 1][1]) })).sort((a, b) => a.y - b.y);
+  const gap = fs * 2.3;
+  for (let i = 1; i < ends.length; i++) ends[i].y = Math.max(ends[i].y, ends[i - 1].y + gap);
+  const over = ends.length ? ends[ends.length - 1].y - (H - m.b) : 0;
+  if (over > 0) ends.forEach(e => e.y -= over);
+
+  const lines = series.map(s => {
+    const pts = s.pts.map(([t, v]) => [X(t), Y(v)]);
+    const path = "M" + pts.map(p => p.map(n => n.toFixed(1)).join(",")).join("L");
+    let len = 0;
+    for (let i = 1; i < pts.length; i++) len += Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]);
+    const [ex, ey] = pts[pts.length - 1];
+    const lab = ends.find(e => e.s === s).y;
+    const last = s.pts[s.pts.length - 1][1];
+    return `<path class="series${animate ? " draw" : ""}" style="--len:${Math.ceil(len)}" stroke="${colors[s.name]}" d="${path}"/>
+      <circle class="end" cx="${ex}" cy="${ey}" r="${fs * 0.45}" fill="${colors[s.name]}"/>
+      <text class="lbl-name" x="${W - m.r + fs * 1.2}" y="${lab}" font-size="${fs * 1.2}">${esc(s.name)}</text>
+      <text class="lbl-val" x="${W - m.r + fs * 1.2}" y="${lab + fs * 1.05}" font-size="${fs * 0.9}">${(last < 0 ? "−$" : "+$") + Math.abs(last).toFixed(2)}</text>`;
+  }).join("");
+
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Cumulative winnings over time for ${series.map(s => s.name).join(", ")}">
+    <g class="grid">${grid}</g>
+    <line class="zero" x1="${m.l}" x2="${W - m.r}" y1="${Y(0)}" y2="${Y(0)}"/>
+    ${ticks}${lines}</svg>`;
 }
 
 // Full-screen recap once per game, and again when the real roast replaces the auto one.
@@ -290,7 +375,7 @@ function fit() {
     }
   });
 }
-window.addEventListener("resize", fit);
+window.addEventListener("resize", () => { fit(); if (lastData && !lastData.games.length) drawChart(lastData, false); });
 if (document.fonts) document.fonts.ready.then(fit);
 
 async function load() {
@@ -300,6 +385,8 @@ async function load() {
     if (d.updated_at === lastStamp) return;
     const first = lastStamp === null;
     lastStamp = d.updated_at;
+    colors = d.colors || {};
+    lastData = d;
     document.title = `${d.title} at ${d.host}`;
     document.getElementById("eyebrow").textContent =
       new Date(d.date + "T12:00:00").toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" });
@@ -312,6 +399,7 @@ async function load() {
     document.body.classList.toggle("pregame", !d.games.length);
     const night = document.getElementById("night");
     night.innerHTML = renderNight(d);
+    if (!d.games.length) drawChart(d, true);
     fit();
     setTimeout(fit, 800);
     if (!first) night.querySelectorAll(".panel").forEach(p => p.classList.add("flash"));

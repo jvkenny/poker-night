@@ -21,5 +21,11 @@
   "newcomers": [
     "Tim Wilcox"
   ],
-  "default_buy_in": 20
+  "default_buy_in": 20,
+  "colors": {
+    "John": "#3987e5",
+    "Andy": "#d95926",
+    "Chris": "#199e70",
+    "Andrew": "#c98500"
+  }
 }

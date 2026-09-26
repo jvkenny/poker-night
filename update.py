@@ -72,6 +72,26 @@ def money(v: float) -> str:
     return f"${abs(v):.2f}"
 
 
+def history(usernames: list[str]) -> dict:
+    """Cumulative lifetime net per poker night (Chicago date) for each player."""
+    with ss._conn() as c:
+        rows = c.execute(
+            """SELECT u.username,
+                      (g.start_time AT TIME ZONE 'America/Chicago')::date AS night,
+                      sum(p.final_balance - p.buy_in) AS net
+               FROM players p JOIN users u ON u.id = p.user_id
+               JOIN games g ON g.id = p.game_id
+               WHERE u.username = ANY(%s) AND g.start_time IS NOT NULL
+               GROUP BY 1, 2 ORDER BY 2""", (usernames,)).fetchall()
+    out: dict[str, list] = {}
+    run: dict[str, float] = {}
+    for r in rows:
+        name = display(r["username"])
+        run[name] = round(run.get(name, 0) + num(r["net"]), 2)
+        out.setdefault(name, []).append([r["night"].isoformat(), run[name]])
+    return out
+
+
 def build() -> dict:
     with ss._conn() as c:
         ids = [r["id"] for r in c.execute(
@@ -127,6 +147,8 @@ def build() -> dict:
 
     return {
         "newcomers": newcomers,
+        "history": history(CONFIG["featured"]),
+        "colors": CONFIG.get("colors", {}),
         "title": CONFIG["title"],
         "host": CONFIG["host"],
         "date": CONFIG["date"],
