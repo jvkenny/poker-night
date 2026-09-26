@@ -2,7 +2,7 @@
   "newcomers": [
     {
       "name": "Tim",
-      "tonight": 1.9
+      "tonight": -2.05
     }
   ],
   "history": {
@@ -870,114 +870,71 @@
         }
       ],
       "recap": {
-        "headline": "Tim takes Game 2",
-        "recap": "Tim walks away up $3.95; Andy is funding tonight's snacks.",
+        "headline": "Chris makes it six. Andy pays for everyone.",
+        "recap": "Chris squeezed out +$0.60, just enough for six straight winning games, a new personal record. Andy went from the green in Game 1 to covering the whole table's winnings.",
         "lines": {
-          "Tim": "Took the pot for $3.95. Insufferable for at least a week.",
-          "Andy": "Donated $7.80 to the cause. Generous. Tragic."
-        },
-        "auto": true
-      }
-    },
-    {
-      "n": 3,
-      "id": 560,
-      "players": [
-        {
-          "name": "Tim",
-          "buy_in": 20.0,
-          "cashout": 23.95,
-          "net": 3.95
-        },
-        {
-          "name": "Andrew",
-          "buy_in": 20.0,
-          "cashout": 23.3,
-          "net": 3.3
-        },
-        {
-          "name": "Chris",
-          "buy_in": 20.0,
-          "cashout": 20.6,
-          "net": 0.6
-        },
-        {
-          "name": "John",
-          "buy_in": 20.0,
-          "cashout": 19.95,
-          "net": -0.05
-        },
-        {
-          "name": "Andy",
-          "buy_in": 20.0,
-          "cashout": 12.2,
-          "net": -7.8
+          "Tim": "+$3.95. Paid his $6 in Game 1, came back and took most of it off Andy. The newcomer is learning fast.",
+          "Andrew": "+$3.30. The host finally charged admission. Took long enough.",
+          "Chris": "+$0.60. Six in a row, a new record. Barely won, but a streak is a streak.",
+          "John": "\u2212$0.05. Lost a nickel. Somehow that's the most embarrassing result on the board.",
+          "Andy": "\u2212$7.80. Every dollar anyone else won this game came straight out of Andy's stack. So much for the Game 1 comeback."
         }
-      ],
-      "recap": {
-        "headline": "Tim takes Game 3",
-        "recap": "Tim walks away up $3.95; Andy is funding tonight's snacks.",
-        "lines": {
-          "Tim": "Took the pot for $3.95. Insufferable for at least a week.",
-          "Andy": "Donated $7.80 to the cause. Generous. Tragic."
-        },
-        "auto": true
       }
     }
   ],
   "standings": [
     {
       "name": "Chris",
-      "net": 7.3,
-      "games": 3,
-      "won": 3,
+      "net": 6.7,
+      "games": 2,
+      "won": 2,
       "best": 6.1,
       "worst": 0.6,
-      "bought_in": 60.0,
-      "rebuys": 0,
-      "busts": 0
-    },
-    {
-      "name": "Andrew",
-      "net": 4.0,
-      "games": 3,
-      "won": 2,
-      "best": 3.3,
-      "worst": -2.6,
-      "bought_in": 60.0,
-      "rebuys": 0,
-      "busts": 0
-    },
-    {
-      "name": "Tim",
-      "net": 1.9,
-      "games": 3,
-      "won": 2,
-      "best": 3.95,
-      "worst": -6.0,
-      "bought_in": 60.0,
+      "bought_in": 40.0,
       "rebuys": 0,
       "busts": 0
     },
     {
       "name": "John",
-      "net": 1.25,
-      "games": 3,
+      "net": 1.3,
+      "games": 2,
       "won": 1,
       "best": 1.35,
       "worst": -0.05,
-      "bought_in": 60.0,
+      "bought_in": 40.0,
+      "rebuys": 0,
+      "busts": 0
+    },
+    {
+      "name": "Andrew",
+      "net": 0.7,
+      "games": 2,
+      "won": 1,
+      "best": 3.3,
+      "worst": -2.6,
+      "bought_in": 40.0,
+      "rebuys": 0,
+      "busts": 0
+    },
+    {
+      "name": "Tim",
+      "net": -2.05,
+      "games": 2,
+      "won": 1,
+      "best": 3.95,
+      "worst": -6.0,
+      "bought_in": 40.0,
       "rebuys": 0,
       "busts": 0
     },
     {
       "name": "Andy",
-      "net": -14.45,
-      "games": 3,
+      "net": -6.65,
+      "games": 2,
       "won": 1,
       "best": 1.15,
       "worst": -7.8,
-      "bought_in": 60.0,
+      "bought_in": 40.0,
       "rebuys": 0,
       "busts": 0
     }
@@ -986,22 +943,22 @@
     {
       "from": "Andy",
       "to": "Chris",
-      "amount": 7.3
+      "amount": 6.65
     },
     {
-      "from": "Andy",
-      "to": "Andrew",
-      "amount": 4.0
+      "from": "Tim",
+      "to": "Chris",
+      "amount": 0.05
     },
     {
-      "from": "Andy",
-      "to": "Tim",
-      "amount": 1.9
-    },
-    {
-      "from": "Andy",
+      "from": "Tim",
       "to": "John",
-      "amount": 1.25
+      "amount": 1.3
+    },
+    {
+      "from": "Tim",
+      "to": "Andrew",
+      "amount": 0.7
     }
   ],
   "featured": [
@@ -1015,7 +972,7 @@
       "best_night": 29.7,
       "worst_night": -15.4,
       "busted": 0,
-      "tonight": 1.25
+      "tonight": 1.3
     },
     {
       "name": "Chris",
@@ -1027,7 +984,7 @@
       "best_night": 27.6,
       "worst_night": -20.0,
       "busted": 1,
-      "tonight": 7.3
+      "tonight": 6.7
     },
     {
       "name": "Andrew",
@@ -1039,7 +996,7 @@
       "best_night": 14.75,
       "worst_night": -10.4,
       "busted": 0,
-      "tonight": 4.0
+      "tonight": 0.7
     },
     {
       "name": "Andy",
@@ -1051,8 +1008,8 @@
       "best_night": 11.51,
       "worst_night": -20.0,
       "busted": 3,
-      "tonight": -14.45
+      "tonight": -6.65
     }
   ],
-  "updated_at": "2026-09-26T03:31:04+00:00"
+  "updated_at": "2026-09-26T03:31:27+00:00"
 }
