@@ -25,6 +25,7 @@ HERE = Path(__file__).resolve().parent
 SS = Path("/Users/john/dev/settle-stack")
 sys.path.insert(0, str(SS / "agent"))
 import settlestack_db as ss  # noqa: E402
+import stats  # noqa: E402
 
 CONFIG = json.loads((HERE / "config.json").read_text())
 
@@ -149,6 +150,7 @@ def build() -> dict:
         "newcomers": newcomers,
         "history": history(CONFIG["featured"]),
         "colors": CONFIG.get("colors", {}),
+        "stats": stats.compute(ss, CONFIG["featured"], display),
         "title": CONFIG["title"],
         "host": CONFIG["host"],
         "date": CONFIG["date"],

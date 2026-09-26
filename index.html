@@ -173,6 +173,60 @@
   .plot .lbl-name { fill: var(--ink); font-family: "Instrument Sans", sans-serif; font-weight: 700; }
   .plot .lbl-val { fill: var(--muted); }
 
+  /* rotating stat slides */
+  .chart { grid-template-rows: auto minmax(0, 1fr) auto; }
+  .plot { transition: opacity .45s ease, transform .45s ease; }
+  .plot.out { opacity: 0; transform: translateY(1.2vh); }
+  .dots { display: flex; gap: calc(var(--u) * 0.5); justify-content: center; padding-top: calc(var(--u) * 0.6); }
+  .dots i { width: calc(var(--u) * 2.2); height: 0.45vh; border-radius: 1vh; background: rgba(244,239,227,0.15); overflow: hidden; }
+  .dots i.on::after { content: ""; display: block; height: 100%; width: 100%; background: var(--gold); transform-origin: left; animation: fillbar var(--dur) linear forwards; }
+  @keyframes fillbar { from { transform: scaleX(0); } }
+  .pop { animation: pop .6s cubic-bezier(.2,1.5,.4,1) both; }
+  @keyframes pop { from { opacity: 0; transform: scale(.6); } }
+  .grow { animation: grow .9s cubic-bezier(.2,1,.3,1) both; transform-origin: left; }
+  @keyframes grow { from { transform: scaleX(0); } }
+  .fit { position: absolute; inset: 0; display: grid; }
+  .who-c { font-weight: 700; }
+
+  .h2h { grid-template-columns: auto repeat(var(--n), minmax(0, 1fr)); gap: calc(var(--u) * 0.5); align-content: center; }
+  .h2h .hd { text-align: center; font-weight: 700; font-size: calc(var(--u) * 1.2); align-self: end; padding-bottom: .3em; }
+  .h2h .rl { font-weight: 700; font-size: calc(var(--u) * 1.3); align-self: center; padding-right: 1em; text-align: right; }
+  .h2h .cell { border-radius: calc(var(--u) * 0.7); display: grid; place-items: center; text-align: center; padding: calc(var(--u) * 0.5); min-height: 0; }
+  .h2h .cell b { font-family: "JetBrains Mono", monospace; font-size: calc(var(--u) * 1.9); display: block; }
+  .h2h .cell small { color: var(--ink); opacity: .75; font-size: calc(var(--u) * 0.8); }
+  .h2h .self { background: rgba(244,239,227,0.04); color: var(--muted); }
+
+  .nem { grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: calc(var(--u) * 1.2); align-content: center; }
+  .nem article { border-radius: calc(var(--u) * 1); background: rgba(0,0,0,0.18); border-top: 0.5vh solid var(--c); padding: calc(var(--u) * 1.1); display: grid; gap: calc(var(--u) * 0.7); }
+  .nem .me { font-family: "DM Serif Display", serif; font-size: calc(var(--u) * 2.4); line-height: 1; }
+  .nem .k { font-family: "JetBrains Mono", monospace; letter-spacing: .2em; font-size: calc(var(--u) * 0.75); color: var(--muted); }
+  .nem .v { font-size: calc(var(--u) * 1.7); font-weight: 700; }
+  .nem .amt { font-family: "JetBrains Mono", monospace; font-size: calc(var(--u) * 1.05); }
+
+  .bars { align-content: center; gap: calc(var(--u) * 0.75); }
+  .bar-row { display: grid; grid-template-columns: calc(var(--u) * 17) minmax(0, 1fr) calc(var(--u) * 7); align-items: center; gap: calc(var(--u) * 1); font-size: calc(var(--u) * 1.3); }
+  .bar-row .track { height: calc(var(--u) * 1.6); }
+  .bar-row .fill { height: 100%; border-radius: 0 calc(var(--u) * 0.4) calc(var(--u) * 0.4) 0; }
+  .bar-row .val { font-family: "JetBrains Mono", monospace; text-align: right; }
+  .twocol { grid-template-columns: 1fr 1fr; gap: calc(var(--u) * 3); align-content: center; }
+  .twocol h3 { margin: 0 0 .6em; font-family: "DM Serif Display", serif; font-weight: 400; font-size: calc(var(--u) * 1.9); }
+  .twocol .bar-row { grid-template-columns: calc(var(--u) * 12) minmax(0, 1fr) calc(var(--u) * 6.5); margin-bottom: calc(var(--u) * 0.6); }
+  .twocol .date { display: block; color: var(--muted); font-size: calc(var(--u) * 0.75); font-family: "JetBrains Mono", monospace; }
+
+  .heat { grid-template-columns: auto repeat(var(--m), minmax(0, 1fr)); gap: 3px; align-content: center; }
+  .heat .hd { font-family: "JetBrains Mono", monospace; font-size: calc(var(--u) * 0.72); color: var(--muted); text-align: center; padding-bottom: .4em; }
+  .heat .rl { font-weight: 700; font-size: calc(var(--u) * 1.2); padding-right: 1em; align-self: center; text-align: right; }
+  .heat .cell { height: calc(var(--u) * 3.6); border-radius: 4px; display: grid; place-items: center; font-family: "JetBrains Mono", monospace; font-size: calc(var(--u) * 0.85); }
+
+  .tape { grid-template-columns: auto repeat(var(--n), minmax(0, 1fr)); align-content: center; row-gap: 0; }
+  .tape > div { padding: calc(var(--u) * 0.55) calc(var(--u) * 0.6); border-top: 1px solid var(--line); text-align: center; font-family: "JetBrains Mono", monospace; font-size: calc(var(--u) * 1.4); }
+  .tape > .hd { border-top: 0; font-family: "DM Serif Display", serif; font-size: calc(var(--u) * 1.9); }
+  .tape > .rl { text-align: right; font-family: "Instrument Sans", sans-serif; color: var(--muted); font-size: calc(var(--u) * 0.95); text-transform: uppercase; letter-spacing: .1em; }
+  .tape .lead { color: var(--gold); }
+  .tape .lead::before { content: "♛ "; }
+  .tape .shame { color: var(--down); }
+  .tape .shame::before { content: "💀 "; }
+
   @media (prefers-reduced-motion: reduce) {
     .player, .suits span, .live-dot, .newcomer, .newcomer::before, .stamp, .roast, .recap-big { animation: none !important; }
   }
@@ -250,15 +304,13 @@ function recapBlock(g, big) {
 
 function renderNight(d) {
   if (!d.games.length) {
-    const last = n => { const h = d.history[n]; return h[h.length - 1][1]; };
-    const names = Object.keys(d.history || {}).sort((a, b) => last(b) - last(a));
     return `<div class="panel chart">
       <div class="chart-head">
-        <div><div class="ptitle">All-time bankroll</div>
-        <div class="sub">Cumulative winnings, night by night · results land here once the cards fly</div></div>
-        <div class="legend">${names.map(n => `<span style="--c:${colors[n]}">${esc(n)}</span>`).join("")}</div>
+        <div><div class="ptitle" id="s-title"></div><div class="sub" id="s-sub"></div></div>
+        <div class="legend" id="s-legend"></div>
       </div>
-      <div class="plot" id="plot"></div></div>`;
+      <div class="plot" id="plot"></div>
+      <div class="dots" id="s-dots"></div></div>`;
   }
   const standings = d.standings.map((s, i) => `
     <tr><td>${i === 0 && s.net > 0 ? '<span class="crown">♛</span> ' : ""}${esc(s.name)}</td>
@@ -347,6 +399,179 @@ function drawChart(d, animate) {
     ${ticks}${lines}</svg>`;
 }
 
+
+// ---- rotating stat slides (pre-game) ---------------------------------------
+const SLIDE_MS = 14000;
+const crewOrder = d => d.featured.map(f => f.name);
+const cname = n => `<span class="who-c" style="color:${colors[n] || "var(--ink)"}">${esc(n)}</span>`;
+const dollars = v => (v < 0 ? "−$" : "$") + Math.abs(v).toFixed(2);
+// diverging fill for win/loss cells: green above even, red below, faint at even
+function divFill(t) { // t in [-1, 1]
+  const a = (0.1 + Math.min(1, Math.abs(t)) * 0.55).toFixed(2);
+  return t >= 0 ? `rgba(127,224,164,${a})` : `rgba(255,138,122,${a})`;
+}
+
+const SLIDES = [
+  { title: "All-time bankroll", sub: "Cumulative winnings, night by night", legend: true,
+    render: (el, d) => drawChart(d, true) },
+
+  { title: "Head to head", sub: "Row finishes ahead of column, in games they both played",
+    render: (el, d) => {
+      const names = crewOrder(d), H = d.stats.h2h;
+      let html = `<div></div>` + names.map(n => `<div class="hd">${cname(n)}</div>`).join("");
+      let k = 0;
+      names.forEach(a => {
+        html += `<div class="rl">${cname(a)}</div>`;
+        names.forEach(b => {
+          if (a === b) { html += `<div class="cell self">—</div>`; return; }
+          const w = H[a][b].ahead, l = H[b][a].ahead, g = H[a][b].games;
+          const t = w + l ? (w - l) / (w + l) : 0;
+          html += `<div class="cell pop" style="background:${divFill(t)};animation-delay:${(k++ * 0.08).toFixed(2)}s">
+            <div><b>${w}–${l}</b><small>${g} games together</small></div></div>`;
+        });
+      });
+      el.innerHTML = `<div class="fit h2h" style="--n:${names.length}">${html}</div>`;
+    } },
+
+  { title: "Nemesis & personal ATM", sub: "Who's taken the most off you, and who's paid you the most, all time",
+    render: (el, d) => {
+      const order = crewOrder(d);
+      const rows = [...d.stats.nemesis].sort((a, b) => order.indexOf(a.name) - order.indexOf(b.name));
+      el.innerHTML = `<div class="fit nem" style="--n:${rows.length}">${rows.map((r, i) => `
+        <article class="pop" style="--c:${colors[r.name]};animation-delay:${i * 0.15}s">
+          <div class="me" style="color:${colors[r.name]}">${esc(r.name)}</div>
+          <div><div class="k">☠ NEMESIS</div><div class="v">${esc(r.nemesis || "nobody yet")}</div>
+            <div class="amt down">has taken ${dollars(r.paid)}</div></div>
+          <div><div class="k">$ PERSONAL ATM</div><div class="v">${esc(r.atm || "nobody yet")}</div>
+            <div class="amt up">has paid ${dollars(r.received)}</div></div>
+        </article>`).join("")}</div>`;
+    } },
+
+  { title: "Follow the money", sub: "Net cash that's changed hands inside the crew, all time",
+    render: (el, d) => {
+      const F = d.stats.flow, pairs = [];
+      Object.keys(F).forEach(a => Object.keys(F[a]).forEach(b => { if (F[a][b] > 0.5) pairs.push({ to: a, from: b, amt: F[a][b] }); }));
+      pairs.sort((x, y) => y.amt - x.amt);
+      const max = Math.max(...pairs.map(p => p.amt), 1);
+      el.innerHTML = `<div class="fit bars">${pairs.map((p, i) => `
+        <div class="bar-row"><div>${cname(p.from)} <span style="color:var(--muted)">→</span> ${cname(p.to)}</div>
+          <div class="track"><div class="fill grow" style="width:${(p.amt / max * 100).toFixed(1)}%;background:linear-gradient(90deg, ${colors[p.from]}, ${colors[p.to]});animation-delay:${i * 0.12}s"></div></div>
+          <div class="val">${dollars(p.amt)}</div></div>`).join("")}</div>`;
+    } },
+
+  { title: "Hall of fame · hall of shame", sub: "Biggest single-game wins and losses in crew history",
+    render: (el, d) => {
+      const col = (list, cls) => {
+        const max = Math.max(...list.map(b => Math.abs(b.net)), 1);
+        return list.map((b, i) => `
+          <div class="bar-row"><div>${cname(b.name)}<span class="date">${new Date(b.date + "T12:00:00").toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })}</span></div>
+            <div class="track"><div class="fill grow" style="width:${(Math.abs(b.net) / max * 100).toFixed(1)}%;background:var(--${cls});animation-delay:${i * 0.12}s"></div></div>
+            <div class="val ${cls}">${money(b.net)}</div></div>`).join("");
+      };
+      el.innerHTML = `<div class="fit twocol">
+        <div><h3>🏆 Fame</h3>${col(d.stats.fame, "up")}</div>
+        <div><h3>💀 Shame</h3>${col(d.stats.shame, "down")}</div></div>`;
+    } },
+
+  { title: "Every game ever", sub: "One dot per game · the white tick is each player's average", legend: true,
+    render: (el, d) => {
+      const W = el.clientWidth, H = el.clientHeight;
+      const u = Math.min(innerWidth / 100, innerHeight * 1.78 / 100), fs = u * 0.95;
+      const names = crewOrder(d), S = d.stats.swings;
+      const all = names.flatMap(n => S[n] || []);
+      const lo = Math.floor(Math.min(-20, ...all) / 10) * 10, hi = Math.ceil(Math.max(20, ...all) / 10) * 10;
+      const m = { l: fs * 7, r: fs * 9, t: fs * 0.5, b: fs * 2.2 };
+      const X = v => m.l + (v - lo) / (hi - lo) * (W - m.l - m.r);
+      const rowH = (H - m.t - m.b) / names.length;
+      let g = "";
+      for (let v = lo; v <= hi; v += 10)
+        g += `<line x1="${X(v)}" x2="${X(v)}" y1="${m.t}" y2="${H - m.b}" stroke="rgba(244,239,227,${v === 0 ? 0.35 : 0.08})" ${v === 0 ? 'stroke-dasharray="4 6"' : ""}/>
+              <text x="${X(v)}" y="${H - fs * 0.4}" text-anchor="middle" font-size="${fs}">${v < 0 ? "−$" : "$"}${Math.abs(v)}</text>`;
+      let k = 0;
+      names.forEach((n, i) => {
+        const cy = m.t + rowH * (i + 0.5), vals = S[n] || [];
+        const avg = vals.reduce((a, b) => a + b, 0) / Math.max(1, vals.length);
+        g += `<text x="${m.l - fs}" y="${cy + fs * 0.4}" text-anchor="end" font-size="${fs * 1.3}" class="lbl-name">${esc(n)}</text>`;
+        vals.forEach((v, j) => {
+          const jit = ((j * 37) % 11 - 5) / 5 * rowH * 0.28;   // deterministic jitter
+          g += `<circle class="pop" style="animation-delay:${(k++ * 0.012).toFixed(3)}s;transform-box:fill-box;transform-origin:center" cx="${X(v)}" cy="${cy + jit}" r="${fs * 0.42}" fill="${colors[n]}" fill-opacity="0.75" stroke="#062418" stroke-width="1.5"/>`;
+        });
+        g += `<line x1="${X(avg)}" x2="${X(avg)}" y1="${cy - rowH * 0.4}" y2="${cy + rowH * 0.4}" stroke="#f4efe3" stroke-width="3" stroke-linecap="round"/>
+              <text x="${W - m.r + fs}" y="${cy + fs * 0.35}" font-size="${fs}" class="lbl-val">avg ${avg < 0 ? "−$" : "+$"}${Math.abs(avg).toFixed(2)}</text>`;
+      });
+      el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Every game result per player">${g}</svg>`;
+    } },
+
+  { title: "Month by month", sub: "Net winnings each month · blank means they sat it out",
+    render: (el, d) => {
+      const names = crewOrder(d), M = d.stats.months;
+      let html = `<div></div>` + M.cols.map(c => {
+        const [y, mo] = c.split("-");
+        return `<div class="hd">${new Date(+y, +mo - 1, 1).toLocaleDateString(undefined, { month: "short" })}<br>${y.slice(2)}</div>`;
+      }).join("");
+      let k = 0;
+      names.forEach(n => {
+        html += `<div class="rl">${cname(n)}</div>`;
+        (M.rows[n] || []).forEach(v => {
+          html += v == null
+            ? `<div class="cell" style="background:rgba(244,239,227,0.03)"></div>`
+            : `<div class="cell pop" style="background:${divFill(v / 40)};animation-delay:${(k++ * 0.02).toFixed(2)}s">${v < 0 ? "−" : "+"}${Math.abs(v).toFixed(0)}</div>`;
+        });
+      });
+      el.innerHTML = `<div class="fit heat" style="--m:${M.cols.length}">${html}</div>`;
+    } },
+
+  { title: "Tale of the tape", sub: "The numbers that settle arguments",
+    render: (el, d) => {
+      const names = crewOrder(d);
+      const R = Object.fromEntries(d.stats.records.map(r => [r.name, r]));
+      const streak = s => s > 0 ? `🔥 W${s}` : s < 0 ? `🧊 L${-s}` : "—";
+      const metrics = [
+        ["Games played", r => r.games, "max"],
+        ["Cash rate", r => r.cashed, "max", v => v + "%"],
+        ["Avg per game", r => r.avg, "max", v => (v < 0 ? "−$" : "+$") + Math.abs(v).toFixed(2)],
+        ["Longest win streak", r => r.win_streak, "max"],
+        ["Current streak", r => r.streak, "max", streak],
+        ["Times busted", r => r.busts, "shame"],
+      ];
+      let html = `<div></div>` + names.map(n => `<div class="hd">${cname(n)}</div>`).join("");
+      metrics.forEach(([label, get, dir, fmt], i) => {
+        const vals = names.map(n => get(R[n] || {}));
+        const best = Math.max(...vals);
+        html += `<div class="rl">${label}</div>` + vals.map((v, j) =>
+          `<div class="pop ${v === best && best > 0 ? (dir === "shame" ? "shame" : "lead") : ""}" style="animation-delay:${(i * 0.1 + j * 0.05).toFixed(2)}s">${fmt ? fmt(v) : v}</div>`).join("");
+      });
+      el.innerHTML = `<div class="fit tape" style="--n:${names.length}">${html}</div>`;
+    } },
+];
+
+let slideIdx = 0;
+function renderSlide(animate = true) {
+  const d = lastData, el = document.getElementById("plot");
+  if (!el || !d || !d.stats) return;
+  const sl = SLIDES[slideIdx];
+  document.getElementById("s-title").textContent = sl.title;
+  document.getElementById("s-sub").textContent = sl.sub;
+  const names = crewOrder(d);
+  document.getElementById("s-legend").innerHTML = sl.legend
+    ? names.map(n => `<span style="--c:${colors[n]}">${esc(n)}</span>`).join("") : "";
+  document.getElementById("s-dots").innerHTML = SLIDES.map((_, i) =>
+    `<i class="${i === slideIdx ? "on" : ""}" style="--dur:${SLIDE_MS}ms"></i>`).join("");
+  el.innerHTML = "";
+  try { sl.render(el, d); } catch (e) { console.error(e); }
+}
+function nextSlide() {
+  const el = document.getElementById("plot");
+  if (!el || !lastData || lastData.games.length) return;
+  el.classList.add("out");
+  setTimeout(() => {
+    slideIdx = (slideIdx + 1) % SLIDES.length;
+    renderSlide();
+    el.classList.remove("out");
+  }, 450);
+}
+setInterval(nextSlide, SLIDE_MS);
+
 // Full-screen recap once per game, and again when the real roast replaces the auto one.
 let shown = null;
 const recapKey = g => g.id + ":" + ((g.recap || {}).auto ? "a" : "r");
@@ -375,7 +600,7 @@ function fit() {
     }
   });
 }
-window.addEventListener("resize", () => { fit(); if (lastData && !lastData.games.length) drawChart(lastData, false); });
+window.addEventListener("resize", () => { fit(); if (lastData && !lastData.games.length) renderSlide(false); });
 if (document.fonts) document.fonts.ready.then(fit);
 
 async function load() {
@@ -399,7 +624,7 @@ async function load() {
     document.body.classList.toggle("pregame", !d.games.length);
     const night = document.getElementById("night");
     night.innerHTML = renderNight(d);
-    if (!d.games.length) drawChart(d, true);
+    if (!d.games.length) renderSlide(false);
     fit();
     setTimeout(fit, 800);
     if (!first) night.querySelectorAll(".panel").forEach(p => p.classList.add("flash"));
